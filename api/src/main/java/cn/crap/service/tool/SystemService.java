@@ -3,10 +3,7 @@ package cn.crap.service.tool;
 import cn.crap.enu.SettingEnum;
 import cn.crap.model.Setting;
 import cn.crap.service.SettingService;
-import cn.crap.utils.HttpPostGet;
-import cn.crap.utils.ISetting;
-import cn.crap.utils.MyString;
-import cn.crap.utils.Tools;
+import cn.crap.utils.*;
 import com.google.common.collect.Maps;
 import net.sf.json.JSONObject;
 import org.apache.log4j.Logger;
@@ -14,6 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 
@@ -37,8 +37,6 @@ public class SystemService {
     private final static String JS_FILE_URLS[] = new String[]{"app.js", "const.js", "services.js", "userRouter.js", "router.js",
             "userCtrls.js", "userBugCtrl.js", "userProjectMetaCtrl.js", "userCommonCtrl.js", "commentCtrl.js", "visitorControllers.js", "visitorRouter.js", "core.js", "coreNew.js", "global.js", "validateAndRefresh.js",
             "crapApi.js", "json.js", "editor.js"};
-    private final static String JS_COMPRESS_URL = "http://tool.oschina.net/action/jscompress/js_compress?munge=0&linebreakpos=5000";
-    private final static String CSS_COMPRESS_URL = "http://tool.oschina.net/action/jscompress/css_compress?linebreakpos=5000";
 
     private static final LinkedHashMap<Integer, String> CHANGE_SQL_MAP = Maps.newLinkedHashMap();
     static {
@@ -315,12 +313,47 @@ public class SystemService {
     public void compressSource() throws Exception{
         String cssBaseFileUrl = Tools.getServicePath() + "resources/css/";
         for (String cssFileUrl : CSS_FILE_URLS){
-            compress(CSS_COMPRESS_URL, cssBaseFileUrl, cssFileUrl);
+            compress(cssBaseFileUrl, cssFileUrl);
         }
 
         String jsBaseFileUrl = Tools.getServicePath() + "resources/js/";
         for (String jsFileUrl : JS_FILE_URLS){
-            compress(JS_COMPRESS_URL, jsBaseFileUrl, jsFileUrl);
+            compress(jsBaseFileUrl, jsFileUrl);
+        }
+    }
+
+    private void compress(String baseFileUrl, String subFileUrl) throws Exception {
+        String fileUrl = baseFileUrl + subFileUrl;
+        OutputStreamWriter resultWriter = null;
+        FileOutputStream fileOutputStream = null;
+        try {
+            fileOutputStream = new FileOutputStream(fileUrl);
+            resultWriter = new OutputStreamWriter(fileOutputStream, "UTF-8");
+            if (subFileUrl.endsWith("js")){
+                CompressorUtils.compressJS(new File(fileUrl),  resultWriter);
+            } else if (subFileUrl.endsWith("css")){
+                CompressorUtils.compressCSS(new File(fileUrl),  resultWriter);
+            }
+        } catch (Throwable e){
+            log.error("压缩js、css异常,compressText",  e);
+            throw e;
+        } finally {
+            try {
+                if (resultWriter != null) {
+                    resultWriter.flush();
+                    resultWriter.close();
+                }
+            } catch (Throwable e2){
+                log.error("压缩js、css异常,关闭 resultWriter 异常",  e2);
+            }
+            try {
+                if (fileOutputStream != null) {
+                    fileOutputStream.flush();
+                    fileOutputStream.close();
+                }
+            } catch (Throwable e2){
+                log.error("压缩js、css异常,关闭 fileOutputStream 异常",  e2);
+            }
         }
     }
 
@@ -346,21 +379,5 @@ public class SystemService {
                 Tools.getRgba(0.1f, settingService.getByKey(ISetting.S_MAIN_COLOR).getValue()));
 
         Tools.staticize(cssContent, cssPath + "/setting.css");
-    }
-
-    private String compress(String compressUrl, String baseFileUrl, String fileUrl) throws Exception {
-        String compressText = null;
-        String compressResult = null;
-        try {
-            String cssSource = Tools.readFile(baseFileUrl + fileUrl);
-            compressText = HttpPostGet.postBody(compressUrl, cssSource, null, 5000);
-            JSONObject jsonObject = JSONObject.fromObject(compressText);
-            compressResult = jsonObject.getString("result");
-            Tools.staticize(compressResult, baseFileUrl + fileUrl);
-        } catch (Throwable e){
-            log.error("压缩js、css异常,compressText:" + compressText,  e);
-            throw e;
-        }
-        return compressResult;
     }
 }
