@@ -32,7 +32,6 @@ public class MockController extends BaseController{
         interfaceBlackList(id);
         log.info("trueExam:" + id  + "," + getIp());
         ipBlackList(ip);
-        interfaceBlackList(id);
 
         getExam(response, id, true, cache);
     }
@@ -48,7 +47,7 @@ public class MockController extends BaseController{
 	}
 
 
-    private void getExam(HttpServletResponse response, String id, boolean isTrueExam, boolean cache) {
+    private void getExam(HttpServletResponse response, String id, boolean isTrueExam, boolean cache) throws MyException{
         response.addHeader("Access-Control-Allow-Credentials", "true");
         response.addHeader("Access-Control-Allow-Headers",
                 "Authorization,Content-Type,Accept,Origin,User-Agent,DNT,Cache-Control,X-Mx-ReqToken,X-Requested-With");
@@ -57,6 +56,12 @@ public class MockController extends BaseController{
         String mockKey = getMockKey(id, isTrueExam);
         String contentTypeKey = getMockKey(id, null);
 
+        try {
+            interfaceBlackList(id);
+        } catch (Throwable e){
+            printMsg(" ", null);
+            return;
+        }
         if (cache){
             String contentType = stringCache.get(contentTypeKey);
             String mockResult = stringCache.get(mockKey);
