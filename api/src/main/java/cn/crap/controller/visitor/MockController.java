@@ -28,16 +28,12 @@ public class MockController extends BaseController{
 	@RequestMapping("/trueExam.do")
 	@ResponseBody
 	public void trueExam(HttpServletResponse response,  @RequestParam String id, @RequestParam(defaultValue = "false") Boolean cache) throws MyException {
-        String ip = getIp();
-        ipBlackList(ip);
         getExam(response, id, true, cache);
     }
 
     @RequestMapping("/falseExam.do")
 	@ResponseBody
 	public void falseExam(HttpServletResponse response, @RequestParam String id, @RequestParam(defaultValue = "false") Boolean cache) throws MyException {
-        String ip = getIp();
-        ipBlackList(ip);
         getExam(response, id, false, cache);
 	}
 
@@ -51,12 +47,30 @@ public class MockController extends BaseController{
         String mockKey = getMockKey(id, isTrueExam);
         String contentTypeKey = getMockKey(id, null);
 
+        if ("166575110957612017308,167049792829712001280".contains(id)){
+            try {
+                response.sendRedirect("https://www.apifox.cn/?utm_source=a1&utm_medium=a1crapapi");
+                return;
+            } catch (Throwable e){
+                printMsg("", null);
+                return;
+            }
+        }
         try {
             interfaceBlackList(id);
         } catch (Throwable e){
             printMsg(" ", null);
             return;
         }
+
+        try {
+            String ip = getIp();
+            ipBlackList(ip);
+        } catch (Throwable e){
+            printMsg(" ", null);
+            return;
+        }
+
         log.info("getExam:" + id  + "," + getIp());
         if (cache){
             String contentType = stringCache.get(contentTypeKey);
