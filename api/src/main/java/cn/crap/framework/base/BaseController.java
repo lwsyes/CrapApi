@@ -58,6 +58,12 @@ public abstract class BaseController implements IConst, ISetting {
             throw new MyException(MyError.E000012);
         }
     }
+    protected void interfaceBlackList(String id) throws MyException{
+        String ipList = settingCache.get(ISetting.S_INTERFACE_BLACK_LIST).getValue();
+        if (ipList.contains(id) || ipList.equals("all")){
+            throw new MyException(MyError.E000012);
+        }
+    }
 
     protected ProjectPO getProject(BaseQuery query){
         Assert.isTrue(MyString.isNotEmptyOrNUll(query.getProjectId())
