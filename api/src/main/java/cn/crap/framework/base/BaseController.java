@@ -46,6 +46,19 @@ public abstract class BaseController implements IConst, ISetting {
     @Resource(name = "objectCache")
     protected ObjectCache objectCache;
 
+    protected String getIp() {
+        HttpServletRequest request = ThreadContext.request();
+        String remoteHost = (request == null ? "" : request.getRemoteHost());
+        return remoteHost;
+    }
+
+    protected void ipBlackList(String ip) throws MyException{
+        String ipList = settingCache.get(ISetting.S_IP_BLACK_LIST).getValue();
+        if (ipList.contains(ip) || ipList.equals("all")){
+            throw new MyException(MyError.E000012);
+        }
+    }
+
     protected ProjectPO getProject(BaseQuery query){
         Assert.isTrue(MyString.isNotEmptyOrNUll(query.getProjectId())
                 || MyString.isNotEmptyOrNUll(query.getModuleId()), "projectId、moduleId不能同时为空");

@@ -1,6 +1,7 @@
 package cn.crap.controller.visitor;
 
 import cn.crap.enu.InterfaceContentType;
+import cn.crap.framework.MyException;
 import cn.crap.framework.base.BaseController;
 import cn.crap.model.InterfaceWithBLOBs;
 import cn.crap.service.InterfaceService;
@@ -26,13 +27,20 @@ public class MockController extends BaseController{
 
 	@RequestMapping("/trueExam.do")
 	@ResponseBody
-	public void trueExam(HttpServletResponse response,  @RequestParam String id, @RequestParam(defaultValue = "false") Boolean cache){
+	public void trueExam(HttpServletResponse response,  @RequestParam String id, @RequestParam(defaultValue = "false") Boolean cache) throws MyException {
+        String ip = getIp();
+        log.info("trueExam:" + id  + "," + getIp());
+        ipBlackList(ip);
+
         getExam(response, id, true, cache);
     }
 
     @RequestMapping("/falseExam.do")
 	@ResponseBody
-	public void falseExam(HttpServletResponse response, @RequestParam String id, @RequestParam(defaultValue = "false") Boolean cache){
+	public void falseExam(HttpServletResponse response, @RequestParam String id, @RequestParam(defaultValue = "false") Boolean cache) throws MyException {
+        String ip = getIp();
+        log.info("falseExam:" + id  + "," + getIp());
+        ipBlackList(ip);
         getExam(response, id, false, cache);
 	}
 

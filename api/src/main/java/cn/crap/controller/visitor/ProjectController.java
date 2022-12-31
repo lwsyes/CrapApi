@@ -30,7 +30,8 @@ public class ProjectController extends BaseController{
 	@RequestMapping("/list.do")
 	@ResponseBody
 	public JsonResult list(@ModelAttribute ProjectQuery query, @RequestParam(defaultValue="3") Integer projectShowType) throws MyException{
-		
+		log.info("projList:" + projectShowType);
+
 		Page page= new Page(query);
 		LoginInfoDto user =  LoginUserHelper.getUser();
 		String userId = user.getId();

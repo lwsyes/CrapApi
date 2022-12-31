@@ -53,6 +53,7 @@ public class InterfaceController extends BaseController {
      */
     @RequestMapping("/detail/pdf.do")
     public String pdf(String id, String moduleId, @RequestParam String secretKey) throws Exception {
+        log.info("pdf:" + id);
         HttpServletRequest request = ThreadContext.request();
         try {
             if (MyString.isEmpty(id) && MyString.isEmpty(moduleId)){
@@ -121,7 +122,7 @@ public class InterfaceController extends BaseController {
     public void download(String id, String moduleId, @RequestParam(defaultValue = "true") boolean pdf,
                          HttpServletRequest req, HttpServletResponse response) throws Exception {
         Assert.isTrue(id != null || moduleId != null, MyError.E000029.getMessage());
-
+        log.info("downloadpdf:" + id);
         InterfaceWithBLOBs interFace = null;
         ModulePO module = moduleCache.get(moduleId);
         if (id != null) {
@@ -159,6 +160,7 @@ public class InterfaceController extends BaseController {
     @ResponseBody
     public JsonResult webList(@RequestParam String moduleId, String interfaceName, String url,
                                Integer currentPage, String password, String visitCode) throws MyException {
+        log.info("interList:" + moduleId);
         if (MyString.isEmpty(moduleId)) {
             throw new MyException(MyError.E000020);
         }
@@ -182,6 +184,10 @@ public class InterfaceController extends BaseController {
     @RequestMapping("/detail.do")
     @ResponseBody
     public JsonResult webDetail(@ModelAttribute InterfaceWithBLOBs interFace, String password, String visitCode) throws MyException {
+        String ip = getIp();
+        log.info("interDetail:" + interFace.getId() + "," + ip);
+        ipBlackList(ip);
+
         interFace = interfaceService.getById(interFace.getId());
         if (interFace != null) {
             ModulePO module = moduleCache.get(interFace.getModuleId());
@@ -207,5 +213,6 @@ public class InterfaceController extends BaseController {
             throw new MyException(MyError.E000012);
         }
     }
+
 
 }

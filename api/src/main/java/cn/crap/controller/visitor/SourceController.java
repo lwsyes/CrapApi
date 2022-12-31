@@ -30,6 +30,7 @@ public class SourceController extends BaseController {
     @RequestMapping("/detail.do")
     @ResponseBody
     public JsonResult webDetail(String id, String password, String visitCode) throws MyException {
+        log.info("sourceDetail:" + id);
         Source model = sourceService.getById(id);
         ProjectPO project = projectCache.get(model.getProjectId());
         // 如果是私有项目，必须登录才能访问，公开项目需要查看是否需要密码
@@ -40,6 +41,7 @@ public class SourceController extends BaseController {
     @RequestMapping("/list.do")
     @ResponseBody
     public JsonResult webList(@ModelAttribute SourceQuery query, String password, String visitCode) throws MyException {
+        log.info("sourceList:" + query.getModuleId());
         ModulePO module = moduleCache.get(query.getModuleId());
         ProjectPO project = projectCache.get(module.getProjectId());
         // 如果是私有项目，必须登录才能访问，公开项目需要查看是否需要密码

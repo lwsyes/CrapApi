@@ -13,6 +13,7 @@ public interface ISetting {
 	String S_LUCENE_DIR = "LUCENE_DIR";
 	String S_INDEX_PAGE = "INDEX_PAGE";
 	String S_TITLE = "TITLE";
+	String S_IP_BLACK_LIST = "IP_BLACK_LIST";
 	String S_ANONYMOUS_COMMENT = "ANONYMOUS_COMMENT";
 	String S_KEYWORDS = "KEYWORDS";
 	String S_DESCRIPTION = "DESCRIPTION";

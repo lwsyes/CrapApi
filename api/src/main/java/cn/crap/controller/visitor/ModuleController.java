@@ -41,7 +41,7 @@ public class ModuleController extends BaseController{
 	@ResponseBody
 	public JsonResult list(@ModelAttribute ModuleQuery query, String password, String visitCode) throws MyException{
         throwExceptionWhenIsNull(query.getProjectId(), "projectId");
-
+		log.info("moduleList:" + query.getProjectId());
         // 如果是私有项目，必须登录才能访问，公开项目需要查看是否需要密码
 		ProjectPO project = projectCache.get(query.getProjectId());
 		checkFrontPermission(password, visitCode, project);
@@ -60,6 +60,7 @@ public class ModuleController extends BaseController{
 	@ResponseBody
 	public JsonResult menu(@RequestParam String projectId) throws MyException{
 		throwExceptionWhenIsNull(projectId, "projectId");
+		log.info("moduleMenu:" + projectId);
 
 		// 如果是私有项目，必须登录才能访问，公开项目需要查看是否需要密码
 		ProjectPO project = projectCache.get(projectId);

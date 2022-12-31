@@ -105,6 +105,7 @@ public class MainController extends BaseController{
 	 */
 	@RequestMapping(value = "plugDashboard.htm")
 	public String plugDashboard(ModelMap modelMap) throws MyException{
+		log.info("plugDashboard");
 		LoginInfoDto loginInfoDto = LoginUserHelper.tryGetUser();
 		modelMap.addAttribute("login", loginInfoDto != null);
 		modelMap.addAttribute("avatarUrl", loginInfoDto != null ? loginInfoDto.getAvatarUrl() : "resources/images/logo_new.png");
@@ -130,7 +131,7 @@ public class MainController extends BaseController{
 
 	@RequestMapping(value = "dashboard.htm")
 	public String dashboard(ModelMap modelMap) throws MyException{
-
+		log.info("dashboard");
 		LoginInfoDto loginInfoDto = LoginUserHelper.tryGetUser();
 		modelMap.addAttribute("login", loginInfoDto != null);
 		modelMap.addAttribute("avatarUrl", loginInfoDto != null ? loginInfoDto.getAvatarUrl() : "resources/images/logo_new.png");
@@ -192,6 +193,7 @@ public class MainController extends BaseController{
 	 */
 	@RequestMapping("/project.do")
 	public String project() throws Exception {
+		log.info("project");
 		return "resources/html/visitor/projectIndex.html";
 	}
 	

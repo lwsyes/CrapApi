@@ -50,7 +50,7 @@ public class ArticleController extends BaseController {
     public JsonResult list(@ModelAttribute ArticleQuery query,
                            String password,
                            String visitCode) throws MyException {
-
+        log.info("articleDiclist:" + query.getModuleId());
         query.setType(ArticleType.DICTIONARY.name());
         ModulePO module = moduleCache.get(query.getModuleId());
         ProjectPO project = projectCache.get(module.getProjectId());
@@ -72,6 +72,7 @@ public class ArticleController extends BaseController {
     public JsonResult articleList(@ModelAttribute ArticleQuery query,
                            String password,
                            String visitCode) throws MyException {
+        log.info("articleList:" + query.getModuleId());
         Page page = new Page(query);
         if (query.getStatus() == null || !query.getStatus().equals(ArticleStatus.RECOMMEND.getStatus())){
             ModulePO module = moduleCache.get(query.getModuleId());
@@ -116,6 +117,7 @@ public class ArticleController extends BaseController {
     public JsonResult articleDetail(@RequestParam String id,
                                 String password, String visitCode,
                                  Integer currentPage) throws MyException {
+        log.info("articleDetail:" + id);
         Map<String, Object> returnMap = new HashMap<>();
         ArticleWithBLOBs article = null;
 
