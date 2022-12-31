@@ -29,10 +29,7 @@ public class MockController extends BaseController{
 	@ResponseBody
 	public void trueExam(HttpServletResponse response,  @RequestParam String id, @RequestParam(defaultValue = "false") Boolean cache) throws MyException {
         String ip = getIp();
-        interfaceBlackList(id);
-        log.info("trueExam:" + id  + "," + getIp());
         ipBlackList(ip);
-
         getExam(response, id, true, cache);
     }
 
@@ -40,8 +37,6 @@ public class MockController extends BaseController{
 	@ResponseBody
 	public void falseExam(HttpServletResponse response, @RequestParam String id, @RequestParam(defaultValue = "false") Boolean cache) throws MyException {
         String ip = getIp();
-        interfaceBlackList(id);
-        log.info("falseExam:" + id  + "," + getIp());
         ipBlackList(ip);
         getExam(response, id, false, cache);
 	}
@@ -62,6 +57,7 @@ public class MockController extends BaseController{
             printMsg(" ", null);
             return;
         }
+        log.info("getExam:" + id  + "," + getIp());
         if (cache){
             String contentType = stringCache.get(contentTypeKey);
             String mockResult = stringCache.get(mockKey);
