@@ -2,6 +2,7 @@ package cn.crap.controller.visitor;
 
 import cn.crap.enu.InterfaceContentType;
 import cn.crap.framework.MyException;
+import cn.crap.framework.ThreadContext;
 import cn.crap.framework.base.BaseController;
 import cn.crap.model.InterfaceWithBLOBs;
 import cn.crap.service.InterfaceService;
@@ -12,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Enumeration;
 
 @Controller
 @RequestMapping("/mock")
@@ -46,7 +49,7 @@ public class MockController extends BaseController{
         response.addHeader("Access-Control-Allow-Origin", "*");
         String mockKey = getMockKey(id, isTrueExam);
         String contentTypeKey = getMockKey(id, null);
-        log.info("getExam:" + id  + "," + getIp());
+        log.info("getExam:" + id  + "," + getIp() + "," + getHeaders());
         if ("166575110957612017308,167049792829712001280".contains(id)){
             try {
                 response.sendRedirect("https://www.apifox.cn/?utm_source=a1&utm_medium=a1crapapi");
@@ -101,4 +104,19 @@ public class MockController extends BaseController{
         }
 		return MOCK_KEY_PRE + (isTrueExam ? "true:" : "false:")+ id;
 	}
+
+    protected String getHeaders() {
+        HttpServletRequest request = ThreadContext.request();
+        //获取请求头信息
+        Enumeration headerNames = request.getHeaderNames();
+        StringBuilder sb = new StringBuilder();
+        //使用循环遍历请求头，并通过getHeader()方法获取一个指定名称的头字段
+        while (headerNames.hasMoreElements()){
+            String headerName = (String) headerNames.nextElement();
+            sb.append(headerName + " : " + request.getHeader(headerName) + ";");
+        }
+        return sb.toString() + request.getRequestURL();
+    }
+
+
 }
