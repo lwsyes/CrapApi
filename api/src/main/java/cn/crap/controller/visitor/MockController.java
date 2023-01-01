@@ -46,7 +46,7 @@ public class MockController extends BaseController{
         response.addHeader("Access-Control-Allow-Origin", "*");
         String mockKey = getMockKey(id, isTrueExam);
         String contentTypeKey = getMockKey(id, null);
-
+        log.info("getExam:" + id  + "," + getIp());
         if ("166575110957612017308,167049792829712001280".contains(id)){
             try {
                 response.sendRedirect("https://www.apifox.cn/?utm_source=a1&utm_medium=a1crapapi");
@@ -56,9 +56,14 @@ public class MockController extends BaseController{
                 return;
             }
         }
+
         try {
             interfaceBlackList(id);
         } catch (Throwable e){
+            try {
+                response.sendRedirect("https://www.apifox.cn/?utm_source=a1&utm_medium=a1crapapi");
+                return;
+            } catch (Throwable e2){}
             printMsg(" ", null);
             return;
         }
