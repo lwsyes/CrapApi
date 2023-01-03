@@ -109,7 +109,7 @@ public class MockController extends BaseController{
             log.info("totalNum" + totalNum);
 
         }
-        if (ipNumMap.size() == 1000){
+        if (ipNumMap.size() == 100){
             Set<String> keySet = ipNumMap.keySet();
             for (String key : keySet){
                 if (ipNumMap.get(key).get() == removeNum){
