@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
@@ -174,20 +175,23 @@ public abstract class BaseController implements IConst, ISetting {
      * @param message
      */
     protected void printMsg(String message) {
-        printMsg(message, InterfaceContentType.HTML);
+        printMsg(null, message, InterfaceContentType.HTML);
     }
 
-    protected void printMsg(String message, InterfaceContentType contentType) {
+    protected void printMsg(HttpServletResponse response, String message, InterfaceContentType contentType) {
         if (contentType == null){
             contentType = InterfaceContentType.JSON;
         }
         if (MyString.isEmpty(message)){
             message = " ";
         }
-        ThreadContext.response().setHeader("Content-Type", contentType.getType());
-        ThreadContext.response().setCharacterEncoding("utf-8");
+        if (response == null){
+            response = ThreadContext.response();
+        }
+        response.setHeader("Content-Type", contentType.getType());
+        response.setCharacterEncoding("utf-8");
         try {
-            PrintWriter out = ThreadContext.response().getWriter();
+            PrintWriter out = response.getWriter();
             out.write(message);
             out.flush();
             out.close();

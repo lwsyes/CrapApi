@@ -91,7 +91,7 @@ public class ThreadContext implements Filter {
                 return true;
             }
 
-            if (uri.toLowerCase().endsWith("trueExam.do") || uri.toLowerCase().endsWith("falseExam.do")){
+            if (uri.toLowerCase().endsWith("trueExam.do".toLowerCase()) || uri.toLowerCase().endsWith("falseExam.do".toLowerCase())){
                 return true;
             }
 

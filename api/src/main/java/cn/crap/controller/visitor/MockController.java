@@ -60,7 +60,7 @@ public class MockController extends BaseController{
         response.addHeader("Access-Control-Allow-Origin", "*");
 
         if ("166575110957612017308,167049792829712001280,164502440303712036550".contains(id) || blackInterface(id)){
-            printMsg("", null);
+            printMsg(response, "", null);
             return;
         }
 
@@ -71,7 +71,7 @@ public class MockController extends BaseController{
         if (cacheValue != null){
             String mockResult = cacheValue.substring(0, cacheValue.lastIndexOf("|"));
             String contentType = cacheValue.substring(cacheValue.lastIndexOf("|") + 1);
-            printMsg(mockResult, InterfaceContentType.getByType(contentType));
+            printMsg(response, mockResult, InterfaceContentType.getByType(contentType));
             return;
         }
 
@@ -85,7 +85,7 @@ public class MockController extends BaseController{
         mockResult = (mockResult == null ? "" : mockResult);
 
         stringCache.add(mockKey,  mockResult + "|" + contentType.getType());
-        printMsg(mockResult, contentType);
+        printMsg(response, mockResult, contentType);
     }
 
     private static int removeNum = 1;
@@ -109,7 +109,7 @@ public class MockController extends BaseController{
             log.info("totalNum" + totalNum);
 
         }
-        if (ipNumMap.size() == 100){
+        if (ipNumMap.size() >= 100){
             Set<String> keySet = ipNumMap.keySet();
             for (String key : keySet){
                 if (ipNumMap.get(key).get() == removeNum){
