@@ -186,7 +186,6 @@ public class InterfaceController extends BaseController {
     public JsonResult webDetail(@ModelAttribute InterfaceWithBLOBs interFace, String password, String visitCode) throws MyException {
         String ip = getIp();
         log.info("interDetail:" + interFace.getId() + "," + ip);
-        ipBlackList(ip);
 
         interFace = interfaceService.getById(interFace.getId());
         if (interFace != null) {

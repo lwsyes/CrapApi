@@ -52,17 +52,9 @@ public abstract class BaseController implements IConst, ISetting {
         return remoteHost;
     }
 
-    protected void ipBlackList(String ip) throws MyException{
-        String ipList = settingCache.get(ISetting.S_IP_BLACK_LIST).getValue();
-        if (ipList.contains(ip) || ipList.equals("all")){
-            throw new MyException(MyError.E000012);
-        }
-    }
-    protected void interfaceBlackList(String id) throws MyException{
+    protected boolean blackInterface(String id) throws MyException{
         String ipList = settingCache.get(ISetting.S_INTERFACE_BLACK_LIST).getValue();
-        if (ipList.contains(id) || ipList.equals("all")){
-            throw new MyException(MyError.E000012);
-        }
+        return (ipList.contains(id) || ipList.equals("all"));
     }
 
     protected ProjectPO getProject(BaseQuery query){

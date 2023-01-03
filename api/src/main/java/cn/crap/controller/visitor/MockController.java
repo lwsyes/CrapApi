@@ -7,6 +7,7 @@ import cn.crap.framework.base.BaseController;
 import cn.crap.model.InterfaceWithBLOBs;
 import cn.crap.service.InterfaceService;
 import cn.crap.service.tool.StringCache;
+import com.google.common.collect.Maps;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +17,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Enumeration;
+import java.util.Random;
+import java.util.Set;
+import java.util.concurrent.ConcurrentMap;
+import java.util.concurrent.atomic.AtomicInteger;
 
 @Controller
 @RequestMapping("/mock")
@@ -25,83 +30,92 @@ public class MockController extends BaseController{
 	private InterfaceService interfaceService;
 	@Autowired
 	private StringCache stringCache;
+    private static final String SPLIT = "|";
 
 	private static final String MOCK_KEY_PRE = "inter:mock:";
+    private static ConcurrentMap<String, AtomicInteger> ipNumMap = Maps.newConcurrentMap();
 
 	@RequestMapping("/trueExam.do")
 	@ResponseBody
-	public void trueExam(HttpServletResponse response,  @RequestParam String id, @RequestParam(defaultValue = "false") Boolean cache) throws MyException {
-        getExam(response, id, true, cache);
+	public void trueExam(HttpServletResponse response,  @RequestParam String id) throws MyException {
+        String ip = getIp();
+        tongJiIp(ip);
+        getExam(response, id, ip,true);
     }
 
     @RequestMapping("/falseExam.do")
 	@ResponseBody
 	public void falseExam(HttpServletResponse response, @RequestParam String id, @RequestParam(defaultValue = "false") Boolean cache) throws MyException {
-        getExam(response, id, false, cache);
+        String ip = getIp();
+        tongJiIp(ip);
+        getExam(response, id, ip,false);
 	}
 
 
-    private void getExam(HttpServletResponse response, String id, boolean isTrueExam, boolean cache) throws MyException{
+    private void getExam(HttpServletResponse response, String id, String ip, boolean isTrueExam) throws MyException{
         response.addHeader("Access-Control-Allow-Credentials", "true");
         response.addHeader("Access-Control-Allow-Headers",
                 "Authorization,Content-Type,Accept,Origin,User-Agent,DNT,Cache-Control,X-Mx-ReqToken,X-Requested-With");
         response.addHeader("Access-Control-Allow-Methods", "GET,HEAD,POST,PUT,PATCH,DELETE,OPTIONS,TRACE");
         response.addHeader("Access-Control-Allow-Origin", "*");
+
+        if ("166575110957612017308,167049792829712001280".contains(id) || blackInterface(id)){
+            printMsg("", null);
+            return;
+        }
+
+        log.info("getExam:" + id  + "," + ip + "," + getHeaders());
+
         String mockKey = getMockKey(id, isTrueExam);
-        String contentTypeKey = getMockKey(id, null);
-        log.info("getExam:" + id  + "," + getIp() + "," + getHeaders());
-        if ("166575110957612017308,167049792829712001280".contains(id)){
-            try {
-                response.sendRedirect("https://www.apifox.cn/?utm_source=a1&utm_medium=a1crapapi");
-                return;
-            } catch (Throwable e){
-                printMsg("", null);
-                return;
-            }
-        }
-
-        try {
-            interfaceBlackList(id);
-        } catch (Throwable e){
-            try {
-                response.sendRedirect("https://www.apifox.cn/?utm_source=a1&utm_medium=a1crapapi");
-                return;
-            } catch (Throwable e2){}
-            printMsg(" ", null);
+        String cacheValue = stringCache.get(mockKey);
+        if (cacheValue != null){
+            String mockResult = cacheValue.substring(0, cacheValue.lastIndexOf("|"));
+            String contentType = cacheValue.substring(cacheValue.lastIndexOf("|") + 1);
+            printMsg(mockResult, InterfaceContentType.getByType(contentType));
             return;
-        }
-
-        try {
-            String ip = getIp();
-            ipBlackList(ip);
-        } catch (Throwable e){
-            printMsg(" ", null);
-            return;
-        }
-
-        log.info("getExam:" + id  + "," + getIp());
-        if (cache){
-            String contentType = stringCache.get(contentTypeKey);
-            String mockResult = stringCache.get(mockKey);
-            if (contentType != null && mockResult != null){
-                printMsg(mockResult, InterfaceContentType.getByType(contentType));
-                return;
-            }
         }
 
         InterfaceWithBLOBs interfaceWithBLOBs = interfaceService.getById(id);
-        String mockResult = isTrueExam ? interfaceWithBLOBs.getTrueExam() : interfaceWithBLOBs.getFalseExam();
-        if (cache){
-            stringCache.add(mockKey, mockResult);
-            stringCache.add(contentTypeKey, interfaceWithBLOBs.getContentType());
+        InterfaceContentType contentType = InterfaceContentType.getByType(interfaceWithBLOBs.getContentType());
+        if (contentType == null){
+            contentType = InterfaceContentType.JSON;
         }
-        printMsg(mockResult, InterfaceContentType.getByType(interfaceWithBLOBs.getContentType()));
+
+        String mockResult = (isTrueExam ? interfaceWithBLOBs.getTrueExam() : interfaceWithBLOBs.getFalseExam());
+        mockResult = (mockResult == null ? "" : mockResult);
+
+        stringCache.add(mockKey,  mockResult + "|" + contentType.getType());
+        printMsg(mockResult, contentType);
     }
 
-	public static String getMockKey(String id, Boolean isTrueExam){
-	    if (isTrueExam == null){
-            return MOCK_KEY_PRE + "contentType:" + id;
+    private static final int num = 1;
+    private void tongJiIp(String ip) {
+        AtomicInteger value = ipNumMap.get(ip);
+        if (value == null){
+            value = new AtomicInteger(0);
         }
+        AtomicInteger oldValue = ipNumMap.putIfAbsent(ip, value);
+        if (oldValue != null) {
+            value = oldValue;
+        }
+        int num = value.incrementAndGet();
+        if (num == 100){
+            log.info(ip + "--100");
+        }
+
+        if (ipNumMap.size() == 1000){
+            Set<String> keySet = ipNumMap.keySet();
+            for (String key : keySet){
+                if (ipNumMap.get(key).get() == num){
+                    ipNumMap.remove(key);
+                }
+            }
+            num = num + 1;
+            log.info("removeIp:" + num);
+        }
+    }
+
+    public static String getMockKey(String id, boolean isTrueExam){
 		return MOCK_KEY_PRE + (isTrueExam ? "true:" : "false:")+ id;
 	}
 
@@ -117,6 +131,5 @@ public class MockController extends BaseController{
         }
         return sb.toString() + request.getRequestURL();
     }
-
 
 }
