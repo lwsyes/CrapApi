@@ -2,7 +2,6 @@ package cn.crap.controller.visitor;
 
 import cn.crap.enu.InterfaceContentType;
 import cn.crap.framework.MyException;
-import cn.crap.framework.ThreadContext;
 import cn.crap.framework.base.BaseController;
 import cn.crap.model.InterfaceWithBLOBs;
 import cn.crap.service.InterfaceService;
@@ -40,7 +39,7 @@ public class MockController extends BaseController{
 	public void trueExam(HttpServletResponse response, HttpServletRequest request, @RequestParam String id) throws MyException {
         String ip =  (request == null ? "" : request.getRemoteHost());
         tongJiIp(ip);
-        getExam(response, id, ip,true);
+        getExam(response, request, id, ip,true);
     }
 
     @RequestMapping("/falseExam.do")
@@ -48,11 +47,11 @@ public class MockController extends BaseController{
 	public void falseExam(HttpServletResponse response, HttpServletRequest request, @RequestParam String id, @RequestParam(defaultValue = "false") Boolean cache) throws MyException {
         String ip =  (request == null ? "" : request.getRemoteHost());
         tongJiIp(ip);
-        getExam(response, id, ip,false);
+        getExam(response, request, id, ip,false);
 	}
 
 
-    private void getExam(HttpServletResponse response, String id, String ip, boolean isTrueExam) throws MyException{
+    private void getExam(HttpServletResponse response, HttpServletRequest request, String id, String ip, boolean isTrueExam) throws MyException{
         response.addHeader("Access-Control-Allow-Credentials", "true");
         response.addHeader("Access-Control-Allow-Headers",
                 "Authorization,Content-Type,Accept,Origin,User-Agent,DNT,Cache-Control,X-Mx-ReqToken,X-Requested-With");
@@ -64,7 +63,7 @@ public class MockController extends BaseController{
             return;
         }
 
-        log.info("getExam:" + id  + "," + ip + "," + getHeaders());
+        log.info("getExam:" + id  + "," + ip + "," + getHeaders(request));
 
         String mockKey = getMockKey(id, isTrueExam);
         String cacheValue = stringCache.get(mockKey);
@@ -106,13 +105,13 @@ public class MockController extends BaseController{
         }
 
         if (totalNum % 100 == 0){
-            log.info("totalNum" + totalNum);
+            log.info("totalNum:" + totalNum);
 
         }
         if (ipNumMap.size() >= 100){
             Set<String> keySet = ipNumMap.keySet();
             for (String key : keySet){
-                if (ipNumMap.get(key).get() == removeNum){
+                if (ipNumMap.get(key).get() <= removeNum){
                     ipNumMap.remove(key);
                 }
             }
@@ -125,8 +124,7 @@ public class MockController extends BaseController{
 		return MOCK_KEY_PRE + (isTrueExam ? "true:" : "false:")+ id;
 	}
 
-    protected String getHeaders() {
-        HttpServletRequest request = ThreadContext.request();
+    protected String getHeaders(HttpServletRequest request ) {
         //获取请求头信息
         Enumeration headerNames = request.getHeaderNames();
         StringBuilder sb = new StringBuilder();
