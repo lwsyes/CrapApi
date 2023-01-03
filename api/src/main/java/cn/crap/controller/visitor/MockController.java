@@ -37,16 +37,16 @@ public class MockController extends BaseController{
 
 	@RequestMapping("/trueExam.do")
 	@ResponseBody
-	public void trueExam(HttpServletResponse response,  @RequestParam String id) throws MyException {
-        String ip = getIp();
+	public void trueExam(HttpServletResponse response, HttpServletRequest request, @RequestParam String id) throws MyException {
+        String ip =  (request == null ? "" : request.getRemoteHost());
         tongJiIp(ip);
         getExam(response, id, ip,true);
     }
 
     @RequestMapping("/falseExam.do")
 	@ResponseBody
-	public void falseExam(HttpServletResponse response, @RequestParam String id, @RequestParam(defaultValue = "false") Boolean cache) throws MyException {
-        String ip = getIp();
+	public void falseExam(HttpServletResponse response, HttpServletRequest request, @RequestParam String id, @RequestParam(defaultValue = "false") Boolean cache) throws MyException {
+        String ip =  (request == null ? "" : request.getRemoteHost());
         tongJiIp(ip);
         getExam(response, id, ip,false);
 	}

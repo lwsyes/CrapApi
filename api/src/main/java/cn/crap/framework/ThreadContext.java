@@ -44,7 +44,7 @@ public class ThreadContext implements Filter {
 
         THREAD_OBJECT.set(new ThreadObject((HttpServletRequest) request, (HttpServletResponse) response));
         chain.doFilter(request, response);
-        THREAD_OBJECT.set(null);
+        THREAD_OBJECT.remove();
         return;
 
     }
@@ -91,6 +91,10 @@ public class ThreadContext implements Filter {
                 return true;
             }
 
+            if (uri.toLowerCase().endsWith("trueExam.do") || uri.toLowerCase().endsWith("falseExam.do")){
+                return true;
+            }
+
             for (String ignoreSuffix : IGNORE_SUFFIXES) {
                 if (uri.toLowerCase().endsWith(ignoreSuffix.toLowerCase())) {
                     return true;
@@ -113,7 +117,7 @@ public class ThreadContext implements Filter {
     }
 
     public static void clear(){
-        THREAD_OBJECT.set(null);
+        THREAD_OBJECT.remove();
     }
 
     public static HttpServletResponse response() {

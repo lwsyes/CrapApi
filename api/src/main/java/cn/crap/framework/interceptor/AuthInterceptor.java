@@ -29,9 +29,7 @@ public class AuthInterceptor extends HandlerInterceptorAdapter{
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        boolean threadHasRequest = true;
         try {
-
             if (!handler.getClass().isAssignableFrom(HandlerMethod.class)) {
                 return true;
             }
@@ -40,13 +38,18 @@ public class AuthInterceptor extends HandlerInterceptorAdapter{
                 return false;
             }
 
-            if (ThreadContext.request() == null) {
-                threadHasRequest = false;
+            /**
+             * 不需要登录的接口
+             */
+            AuthPassport authPassport = ((HandlerMethod) handler).getMethodAnnotation(AuthPassport.class);
+            if (authPassport == null || authPassport.validate() == false) {
+                return true;
             }
 
-            if (!threadHasRequest) {
-                ThreadContext.set(request, response);
+            if (ThreadContext.request() == null) {
+                throw new MyException(MyError.E000021);
             }
+
             /**
              * 未登录用户唯一识别，验证码等需要
              */
@@ -63,14 +66,6 @@ public class AuthInterceptor extends HandlerInterceptorAdapter{
                 e.printStackTrace();
                 serviceIp = "can not get service ip";
                 response.setHeader("serviceIp", serviceIp);
-            }
-
-            /**
-             * 不需要登录的接口
-             */
-            AuthPassport authPassport = ((HandlerMethod) handler).getMethodAnnotation(AuthPassport.class);
-            if (authPassport == null || authPassport.validate() == false) {
-                return true;
             }
 
 
@@ -101,10 +96,6 @@ public class AuthInterceptor extends HandlerInterceptorAdapter{
             return true;
         }catch (Exception e){
             throw e;
-        }finally {
-            if (!threadHasRequest) {
-                ThreadContext.clear();
-            }
         }
     }
 	
