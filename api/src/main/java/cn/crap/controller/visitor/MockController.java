@@ -59,7 +59,7 @@ public class MockController extends BaseController{
         response.addHeader("Access-Control-Allow-Methods", "GET,HEAD,POST,PUT,PATCH,DELETE,OPTIONS,TRACE");
         response.addHeader("Access-Control-Allow-Origin", "*");
 
-        if ("166575110957612017308,167049792829712001280".contains(id) || blackInterface(id)){
+        if ("166575110957612017308,167049792829712001280,164502440303712036550".contains(id) || blackInterface(id)){
             printMsg("", null);
             return;
         }
@@ -88,8 +88,10 @@ public class MockController extends BaseController{
         printMsg(mockResult, contentType);
     }
 
-    private static final int num = 1;
+    private static int removeNum = 1;
+    private static int totalNum = 0;
     private void tongJiIp(String ip) {
+        totalNum = totalNum + 1;
         AtomicInteger value = ipNumMap.get(ip);
         if (value == null){
             value = new AtomicInteger(0);
@@ -103,14 +105,18 @@ public class MockController extends BaseController{
             log.info(ip + "--100");
         }
 
+        if (totalNum % 100 == 0){
+            log.info("totalNum" + totalNum);
+
+        }
         if (ipNumMap.size() == 1000){
             Set<String> keySet = ipNumMap.keySet();
             for (String key : keySet){
-                if (ipNumMap.get(key).get() == num){
+                if (ipNumMap.get(key).get() == removeNum){
                     ipNumMap.remove(key);
                 }
             }
-            num = num + 1;
+            removeNum = removeNum + 1;
             log.info("removeIp:" + num);
         }
     }
