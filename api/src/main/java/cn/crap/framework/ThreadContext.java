@@ -43,8 +43,14 @@ public class ThreadContext implements Filter {
         }
 
         THREAD_OBJECT.set(new ThreadObject((HttpServletRequest) request, (HttpServletResponse) response));
-        chain.doFilter(request, response);
-        THREAD_OBJECT.remove();
+        try {
+            chain.doFilter(request, response);
+        } catch (Throwable e){
+            throw e;
+        } finally {
+            THREAD_OBJECT.set(null);
+            THREAD_OBJECT.remove();
+        }
         return;
 
     }
@@ -117,6 +123,7 @@ public class ThreadContext implements Filter {
     }
 
     public static void clear(){
+        THREAD_OBJECT.set(null);
         THREAD_OBJECT.remove();
     }
 

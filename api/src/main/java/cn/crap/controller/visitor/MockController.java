@@ -116,7 +116,7 @@ public class MockController extends BaseController{
                 }
             }
             removeNum = removeNum + 1;
-            log.info("removeIp:" + num);
+            log.info("removeIp:" + removeNum);
         }
     }
 
