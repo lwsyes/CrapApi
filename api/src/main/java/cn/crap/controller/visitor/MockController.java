@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Enumeration;
+import java.util.HashMap;
 import java.util.Random;
 import java.util.Set;
 import java.util.concurrent.ConcurrentMap;
@@ -32,7 +33,7 @@ public class MockController extends BaseController{
     private static final String SPLIT = "|";
 
 	private static final String MOCK_KEY_PRE = "inter:mock:";
-    private static ConcurrentMap<String, AtomicInteger> ipNumMap = Maps.newConcurrentMap();
+    private static HashMap<String, AtomicInteger> ipNumMap = Maps.newHashMap();
 
 	@RequestMapping("/trueExam.do")
 	@ResponseBody
@@ -111,6 +112,10 @@ public class MockController extends BaseController{
         if (ipNumMap.size() >= 100){
             Set<String> keySet = ipNumMap.keySet();
             for (String key : keySet){
+                if (ipNumMap.get(key) == null){
+                    continue;
+                }
+                log.info(key + "--" + ipNumMap.get(key).get());
                 if (ipNumMap.get(key).get() <= removeNum){
                     ipNumMap.remove(key);
                 }

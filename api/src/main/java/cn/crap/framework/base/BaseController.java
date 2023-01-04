@@ -138,7 +138,12 @@ public abstract class BaseController implements IConst, ISetting {
         if (ex instanceof NullPointerException) {
             log.error("空指针异常," + request.getRequestURI() + ",userId:" + userId + ",params:" + getAllStrParam(request), ex);
             return new JsonResult(new MyException(MyError.E000051));
-        } else {
+        }
+        else if (ex instanceof IOException) {
+            log.error("IOException," + request.getRequestURI() + ",userId:" + userId + ",params:" + getAllStrParam(request) + "," + ex.getMessage());
+            return new JsonResult(new MyException(MyError.E000051));
+        }
+        else {
             log.error("异常," + request.getRequestURI() + ",userId:" + userId + ",params:" + getAllStrParam(request), ex);
             ByteArrayOutputStream outPutStream = new ByteArrayOutputStream();
             ex.printStackTrace(new PrintStream(outPutStream));
