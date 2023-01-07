@@ -221,6 +221,7 @@ public class InterfaceController extends BaseController{
 			if(!Config.canRepeatUrl && interfaceService.count(interfaceQuery)>0){
 				return new JsonResult(MyError.E000004);
 			}
+			interFace.setId(System.currentTimeMillis() + "" + user.getId().substring(7));
 			interfaceService.insert(interFace);
 			id = interFace.getId();
 		}
