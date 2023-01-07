@@ -607,28 +607,28 @@ app.config(function($stateProvider, $urlRouterProvider) {
         url : '/user/bug/list?currentPage&name&creator&executor&tracer&tester&' + commonUrlParam,
         views : {
             'main' : {
-                templateUrl: 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/user/bugList.tpl.html?v=V8.2.0_0631'
+                templateUrl: 'resources/html/user/bugList.tpl.html?v=V8.2.0_0631'
             }, 'page@userBugList' : {
-                templateUrl : 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/admin/page.tpl.html?v=V8.2.0_0631'
+                templateUrl : 'resources/html/admin/page.tpl.html?v=V8.2.0_0631'
             },'subMenu' :{
-                templateUrl : 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/subTpl/subMenuModule.tpl.html?v=V8.2.0_0631'
+                templateUrl : 'resources/html/subTpl/subMenuModule.tpl.html?v=V8.2.0_0631'
             }
         }
     }).state('userEditBug', {
         url : '/user/bug/edit?id&type&' + commonUrlParam,
         views : {
             'subMenu' :{
-                templateUrl : 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/subTpl/subMenuModule.tpl.html?v=V8.2.0_0631'
+                templateUrl : 'resources/html/subTpl/subMenuModule.tpl.html?v=V8.2.0_0631'
             }, 'main' : {
-                templateUrl : 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/user/bugEdit.tpl.html?v=V8.2.0_0631'
+                templateUrl : 'resources/html/user/bugEdit.tpl.html?v=V8.2.0_0631'
             },'comment@userEditBug' : {
-                templateUrl : 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/subTpl/bugComment.tpl.html?v=V8.2.0_0631'
+                templateUrl : 'resources/html/subTpl/bugComment.tpl.html?v=V8.2.0_0631'
             },'zoomImg@userEditBug' : {
-                templateUrl : 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/subTpl/zoomImg.tpl.html?v=V8.2.0_0631'
+                templateUrl : 'resources/html/subTpl/zoomImg.tpl.html?v=V8.2.0_0631'
             },'bugLog@userEditBug' : {
-                templateUrl : 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/subTpl/bugLog.tpl.html?v=V8.2.0_0631'
+                templateUrl : 'resources/html/subTpl/bugLog.tpl.html?v=V8.2.0_0631'
             },'page@userEditBug' : {
-                templateUrl : 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/visitor/page.tpl.html?v=V8.2.0_0631'
+                templateUrl : 'resources/html/visitor/page.tpl.html?v=V8.2.0_0631'
             }
         }
     });
@@ -639,14 +639,14 @@ app.config(function($stateProvider, $urlRouterProvider) {
         views : {
             'main' : {
                 templateUrl : function($stateParems){
-                    return 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/user/searchList.tpl.html?v=V8.2.0_0631';
+                    return 'resources/html/user/searchList.tpl.html?v=V8.2.0_0631';
                 }
             },
             'page@userSearchList' : {
-                templateUrl : 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/admin/page.tpl.html?v=V8.2.0_0631'
+                templateUrl : 'resources/html/admin/page.tpl.html?v=V8.2.0_0631'
             },'subMenu' :{
                 templateUrl : function($stateParems){
-                    return 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/subTpl/subMenuModule.tpl.html?v=V8.2.0_0631';
+                    return 'resources/html/subTpl/subMenuModule.tpl.html?v=V8.2.0_0631';
                 }
             }
         }
@@ -658,14 +658,14 @@ app.config(function($stateProvider, $urlRouterProvider) {
         views : {
             'main' : {
                 templateUrl : function($stateParems){
-                    return 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/user/articleList.tpl.html?v=V8.2.0_0631';
+                    return 'resources/html/user/articleList.tpl.html?v=V8.2.0_0631';
                 }
             },
             'page@userArticleList' : {
-                templateUrl : 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/admin/page.tpl.html?v=V8.2.0_0631'
+                templateUrl : 'resources/html/admin/page.tpl.html?v=V8.2.0_0631'
             },'subMenu' :{
                 templateUrl : function($stateParems){
-                    return 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/subTpl/subMenuModule.tpl.html?v=V8.2.0_0631';
+                    return 'resources/html/subTpl/subMenuModule.tpl.html?v=V8.2.0_0631';
                 }
             }
         }
@@ -674,11 +674,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
         views : {
             'subMenu' :{
                 templateUrl : function($stateParems){
-                    return 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/subTpl/subMenuModule.tpl.html?v=V8.2.0_0631';
+                    return 'resources/html/subTpl/subMenuModule.tpl.html?v=V8.2.0_0631';
                 }
             }, 'main' : {
                 templateUrl : function($stateParems){
-                    return 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/user/articleEdit.tpl.html?v=V8.2.0_0631';
+                    return 'resources/html/user/articleEdit.tpl.html?v=V8.2.0_0631';
                 }
             }
         }
@@ -687,11 +687,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
         views : {
             'subMenu' :{
                 templateUrl : function($stateParems){
-                    return 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/subTpl/subMenuModule.tpl.html?v=V8.2.0_0631';
+                    return 'resources/html/subTpl/subMenuModule.tpl.html?v=V8.2.0_0631';
                 }
             }, 'main' : {
                 templateUrl : function($stateParems){
-                    return 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/user/articleDetail.tpl.html?v=V8.2.0_0631';
+                    return 'resources/html/user/articleDetail.tpl.html?v=V8.2.0_0631';
                 }
             }
         }
@@ -703,14 +703,14 @@ app.config(function($stateProvider, $urlRouterProvider) {
         views : {
             'main' : {
                 templateUrl : function($stateParems){
-                    return 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/user/dictionaryList.tpl.html?v=V8.2.0_0631';
+                    return 'resources/html/user/dictionaryList.tpl.html?v=V8.2.0_0631';
                 }
             },
             'page@userDictionaryList' : {
-                templateUrl : 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/admin/page.tpl.html?v=V8.2.0_0631'
+                templateUrl : 'resources/html/admin/page.tpl.html?v=V8.2.0_0631'
             },'subMenu' :{
                 templateUrl : function($stateParems){
-                    return 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/subTpl/subMenuModule.tpl.html?v=V8.2.0_0631';
+                    return 'resources/html/subTpl/subMenuModule.tpl.html?v=V8.2.0_0631';
                 }
             }
         }
@@ -719,11 +719,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
         views : {
             'subMenu' :{
                 templateUrl : function($stateParems){
-                    return 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/subTpl/subMenuModule.tpl.html?v=V8.2.0_0631';
+                    return 'resources/html/subTpl/subMenuModule.tpl.html?v=V8.2.0_0631';
                 }
             }, 'main' : {
                 templateUrl : function($stateParems){
-                    return 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/user/dictionaryEdit.tpl.html?v=V8.2.0_0631';
+                    return 'resources/html/user/dictionaryEdit.tpl.html?v=V8.2.0_0631';
                 }
             }
         }
@@ -732,11 +732,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
         views : {
             'subMenu' :{
                 templateUrl : function($stateParems){
-                    return 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/subTpl/subMenuModule.tpl.html?v=V8.2.0_0631';
+                    return 'resources/html/subTpl/subMenuModule.tpl.html?v=V8.2.0_0631';
                 }
             }, 'main' : {
                 templateUrl : function($stateParems){
-                    return 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/user/dictionaryDetail.tpl.html?v=V8.2.0_0631';
+                    return 'resources/html/user/dictionaryDetail.tpl.html?v=V8.2.0_0631';
                 }
             }
         }
@@ -747,16 +747,16 @@ app.config(function($stateProvider, $urlRouterProvider) {
         url : '/user/interface/list?&interfaceName&url&currentPage&' + commonUrlParam,
         views : {
             'main' : {
-                templateUrl : 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/user/interfaceList.tpl.html?v=V8.2.0_0631'
+                templateUrl : 'resources/html/user/interfaceList.tpl.html?v=V8.2.0_0631'
             },'detail' : {
                 templateUrl : function($stateParems){
-                    return 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/user/interfaceCopy.tpl.html?v=V8.2.0_0631';
+                    return 'resources/html/user/interfaceCopy.tpl.html?v=V8.2.0_0631';
                 }
             }, 'page@userInterList' : {
-                templateUrl : 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/admin/page.tpl.html?v=V8.2.0_0631'
+                templateUrl : 'resources/html/admin/page.tpl.html?v=V8.2.0_0631'
             },'subMenu' :{
                 templateUrl : function($stateParems){
-                    return 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/subTpl/subMenuModule.tpl.html?v=V8.2.0_0631';
+                    return 'resources/html/subTpl/subMenuModule.tpl.html?v=V8.2.0_0631';
                 }
             }
         }
@@ -765,26 +765,26 @@ app.config(function($stateProvider, $urlRouterProvider) {
         views : {
             'subMenu' :{
                 templateUrl : function($stateParems){
-                    return 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/subTpl/subMenuModule.tpl.html?v=V8.2.0_0631';
+                    return 'resources/html/subTpl/subMenuModule.tpl.html?v=V8.2.0_0631';
                 }
             }, 'main' : {
                 templateUrl : function($stateParems){
-                    return 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/user/interfaceEdit.tpl.html?v=V8.2.0_0631';
+                    return 'resources/html/user/interfaceEdit.tpl.html?v=V8.2.0_0631';
                 }
             },'detail' : {
                 templateUrl : function($stateParems){
-                    return 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/subTpl/interEditDialog.tpl.html?v=V8.2.0_0631';
+                    return 'resources/html/subTpl/interEditDialog.tpl.html?v=V8.2.0_0631';
                 }
             }, 'interBaseEdit@userInterfaceEdit' : {
-                templateUrl : 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/subTpl/interBaseEdit.tpl.html?v=V8.2.0_0631'
+                templateUrl : 'resources/html/subTpl/interBaseEdit.tpl.html?v=V8.2.0_0631'
             }, 'interResParamEdit@userInterfaceEdit' : {
-                templateUrl : 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/subTpl/interResParamEdit.tpl.html?v=V8.2.0_0631'
+                templateUrl : 'resources/html/subTpl/interResParamEdit.tpl.html?v=V8.2.0_0631'
             }, 'interParamEdit@userInterfaceEdit' : {
-                templateUrl : 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/subTpl/interParamEdit.tpl.html?v=V8.2.0_0631'
+                templateUrl : 'resources/html/subTpl/interParamEdit.tpl.html?v=V8.2.0_0631'
             }, 'interHeaderEdit@userInterfaceEdit' : {
-                templateUrl : 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/subTpl/interHeaderEdit.tpl.html?v=V8.2.0_0631'
+                templateUrl : 'resources/html/subTpl/interHeaderEdit.tpl.html?v=V8.2.0_0631'
             }, 'interExampleEdit@userInterfaceEdit' : {
-                templateUrl : 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/subTpl/interExampleEdit.tpl.html?v=V8.2.0_0631'
+                templateUrl : 'resources/html/subTpl/interExampleEdit.tpl.html?v=V8.2.0_0631'
             }
         }
     }).state('userInterfaceDetail', {
@@ -792,11 +792,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
         views : {
             'subMenu' :{
                 templateUrl : function($stateParems){
-                    return 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/subTpl/subMenuModule.tpl.html?v=V8.2.0_0631';
+                    return 'resources/html/subTpl/subMenuModule.tpl.html?v=V8.2.0_0631';
                 }
             }, 'main' : {
                 templateUrl : function($stateParems){
-                    return 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/user/interfaceDetail.tpl.html?v=V8.2.0_0631';
+                    return 'resources/html/user/interfaceDetail.tpl.html?v=V8.2.0_0631';
                 }
             }
         }
@@ -805,16 +805,16 @@ app.config(function($stateProvider, $urlRouterProvider) {
         views : {
             'subMenu' :{
                 templateUrl : function($stateParems){
-                    return 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/subTpl/subMenuModule.tpl.html?v=V8.2.0_0631';
+                    return 'resources/html/subTpl/subMenuModule.tpl.html?v=V8.2.0_0631';
                 }
             }, 'main' : {
                 templateUrl : function($stateParems){
-                    return 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/user/interfaceDebug.tpl.html?v=V8.2.0_0631';
+                    return 'resources/html/user/interfaceDebug.tpl.html?v=V8.2.0_0631';
                 }
             }, 'interParamEdit@userInterfaceDebug' : {
-                templateUrl : 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/subTpl/interParamEdit.tpl.html?v=V8.2.0_0631'
+                templateUrl : 'resources/html/subTpl/interParamEdit.tpl.html?v=V8.2.0_0631'
             }, 'interHeaderEdit@userInterfaceDebug' : {
-                templateUrl : 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/subTpl/interHeaderEdit.tpl.html?v=V8.2.0_0631'
+                templateUrl : 'resources/html/subTpl/interHeaderEdit.tpl.html?v=V8.2.0_0631'
             }
         }
     });
@@ -824,39 +824,39 @@ app.config(function($stateProvider, $urlRouterProvider) {
         url : '/login',
         views : {
             'main' : {
-                templateUrl : 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/admin/login.tpl.html?v=V8.2.0_0631'
+                templateUrl : 'resources/html/admin/login.tpl.html?v=V8.2.0_0631'
             }
         }
     }).state('register', {
         url : '/register',
         views : {
             'main' : {
-                templateUrl : 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/admin/register.tpl.html?v=V8.2.0_0631'
+                templateUrl : 'resources/html/admin/register.tpl.html?v=V8.2.0_0631'
             }
         }
     }).state('findPwd', {
         url : '/findPwd',
         views : {
             'main' : {
-                templateUrl : 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/user/findPwd.tpl.html?v=V8.2.0_0631'
+                templateUrl : 'resources/html/user/findPwd.tpl.html?v=V8.2.0_0631'
             }
         }
     }).state('menuList', {
         url : '/admin/menu/list?parentId&type&menuName&' + commonUrlParam,
         views : {
             'main' : {
-                templateUrl : 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/admin/menuList.tpl.html?v=V8.2.0_0631'
+                templateUrl : 'resources/html/admin/menuList.tpl.html?v=V8.2.0_0631'
             },
             'page@menuList' : {
-                templateUrl : 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/admin/page.tpl.html?v=V8.2.0_0631'
+                templateUrl : 'resources/html/admin/page.tpl.html?v=V8.2.0_0631'
             },
             'detail' : {
                 templateUrl : function($stateParems){
-                    return 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/admin/menuDetail.tpl.html?v=V8.2.0_0631';
+                    return 'resources/html/admin/menuDetail.tpl.html?v=V8.2.0_0631';
                 }
             },'subMenu' :{
                 templateUrl : function($stateParems){
-                    return 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/subTpl/subMenuMenu.tpl.html?v=V8.2.0_0631';
+                    return 'resources/html/subTpl/subMenuMenu.tpl.html?v=V8.2.0_0631';
                 }
             }
         }
@@ -865,17 +865,17 @@ app.config(function($stateProvider, $urlRouterProvider) {
         views : {
             'main' :{
                 templateUrl : function($stateParems){
-                    return 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/user/projectList.tpl.html?v=V8.2.0_0631';
+                    return 'resources/html/user/projectList.tpl.html?v=V8.2.0_0631';
                 }
             },'page@projectList' : {
-                templateUrl : 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/admin/page.tpl.html?v=V8.2.0_0631'
+                templateUrl : 'resources/html/admin/page.tpl.html?v=V8.2.0_0631'
             },'detail' : {
                 templateUrl : function($stateParems){
-                    return 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/user/projectDetail.tpl.html?v=V8.2.0_0631';
+                    return 'resources/html/user/projectDetail.tpl.html?v=V8.2.0_0631';
                 }
             },'subMenu' :{
                 templateUrl : function($stateParems){
-                    return 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/subTpl/subMenuProject.tpl.html?v=V8.2.0_0631';
+                    return 'resources/html/subTpl/subMenuProject.tpl.html?v=V8.2.0_0631';
                 }
             }
 
@@ -885,15 +885,15 @@ app.config(function($stateProvider, $urlRouterProvider) {
         views : {
             'main' :{
                 templateUrl : function($stateParems){
-                    return 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/user/project.tpl.html?v=V8.2.0_0631';
+                    return 'resources/html/user/project.tpl.html?v=V8.2.0_0631';
                 }
             },'detail' : {
                 templateUrl : function($stateParems){
-                    return 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/user/projectDetail.tpl.html?v=V8.2.0_0631';
+                    return 'resources/html/user/projectDetail.tpl.html?v=V8.2.0_0631';
                 }
             },'subMenu' :{
                 templateUrl : function($stateParems){
-                    return 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/subTpl/subMenuModule.tpl.html?v=V8.2.0_0631';
+                    return 'resources/html/subTpl/subMenuModule.tpl.html?v=V8.2.0_0631';
                 }
             }
 
@@ -902,18 +902,18 @@ app.config(function($stateProvider, $urlRouterProvider) {
         url : '/user/module/list?name&' + commonUrlParam,
         views : {
             'main' : {
-                templateUrl : 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/user/moduleList.tpl.html?v=V8.2.0_0631'
+                templateUrl : 'resources/html/user/moduleList.tpl.html?v=V8.2.0_0631'
             },
             'page@moduleList' : {
-                templateUrl : 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/admin/page.tpl.html?v=V8.2.0_0631'
+                templateUrl : 'resources/html/admin/page.tpl.html?v=V8.2.0_0631'
             },
             'detail' : {
                 templateUrl : function($stateParems){
-                    return 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/user/moduleDetail.tpl.html?v=V8.2.0_0631';
+                    return 'resources/html/user/moduleDetail.tpl.html?v=V8.2.0_0631';
                 }
             },'subMenu' :{
                 templateUrl : function($stateParems){
-                    return 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/subTpl/subMenuModule.tpl.html?v=V8.2.0_0631';
+                    return 'resources/html/subTpl/subMenuModule.tpl.html?v=V8.2.0_0631';
                 }
             }
         }
@@ -921,18 +921,18 @@ app.config(function($stateProvider, $urlRouterProvider) {
         url : '/user/error/list?' + commonUrlParam,
         views : {
             'main' : {
-                templateUrl : 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/user/errorList.tpl.html?v=V8.2.0_0631'
+                templateUrl : 'resources/html/user/errorList.tpl.html?v=V8.2.0_0631'
             },'subMenu' :{
                 templateUrl : function($stateParems){
-                    return 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/subTpl/subMenuModule.tpl.html?v=V8.2.0_0631';
+                    return 'resources/html/subTpl/subMenuModule.tpl.html?v=V8.2.0_0631';
                 }
             },
             'page@errorList' : {
-                templateUrl : 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/admin/page.tpl.html?v=V8.2.0_0631'
+                templateUrl : 'resources/html/admin/page.tpl.html?v=V8.2.0_0631'
             },
             'detail' : {
                 templateUrl : function($stateParems){
-                    return 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/user/errorDetail.tpl.html?v=V8.2.0_0631';
+                    return 'resources/html/user/errorDetail.tpl.html?v=V8.2.0_0631';
                 }
             }
         }
@@ -940,18 +940,18 @@ app.config(function($stateProvider, $urlRouterProvider) {
         url : '/user/projectUser/list?name&' + commonUrlParam,
         views : {
             'main' : {
-                templateUrl : 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/user/projectUserList.tpl.html?v=V8.2.0_0631'
+                templateUrl : 'resources/html/user/projectUserList.tpl.html?v=V8.2.0_0631'
             },'subMenu' :{
                 templateUrl : function($stateParems){
-                    return 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/subTpl/subMenuModule.tpl.html?v=V8.2.0_0631';
+                    return 'resources/html/subTpl/subMenuModule.tpl.html?v=V8.2.0_0631';
                 }
             },
             'page@projectUserList' : {
-                templateUrl : 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/admin/page.tpl.html?v=V8.2.0_0631'
+                templateUrl : 'resources/html/admin/page.tpl.html?v=V8.2.0_0631'
             },
             'detail' : {
                 templateUrl : function($stateParems){
-                    return 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/user/projectUserDetail.tpl.html?v=V8.2.0_0631';
+                    return 'resources/html/user/projectUserDetail.tpl.html?v=V8.2.0_0631';
                 }
             }
         }
@@ -959,18 +959,18 @@ app.config(function($stateProvider, $urlRouterProvider) {
         url : '/user/projectMeta/list?type&' + commonUrlParam,
         views : {
             'main' : {
-                templateUrl : 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/user/projectMetaList.tpl.html?v=V8.2.0_0631'
+                templateUrl : 'resources/html/user/projectMetaList.tpl.html?v=V8.2.0_0631'
             },'subMenu' :{
                 templateUrl : function($stateParems){
-                    return 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/subTpl/subMenuModule.tpl.html?v=V8.2.0_0631';
+                    return 'resources/html/subTpl/subMenuModule.tpl.html?v=V8.2.0_0631';
                 }
             },
             'page@projectMetaList' : {
-                templateUrl : 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/admin/page.tpl.html?v=V8.2.0_0631'
+                templateUrl : 'resources/html/admin/page.tpl.html?v=V8.2.0_0631'
             },
             'detail' : {
                 templateUrl : function($stateParems){
-                    return 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/user/projectMetaEdit.tpl.html?v=V8.2.0_0631';
+                    return 'resources/html/user/projectMetaEdit.tpl.html?v=V8.2.0_0631';
                 }
             }
         }
@@ -978,18 +978,18 @@ app.config(function($stateProvider, $urlRouterProvider) {
         url : '/user/log/list?identy&' + commonUrlParam,
         views : {
             'main' : {
-                templateUrl : 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/user/logList.tpl.html?v=V8.2.0_0631'
+                templateUrl : 'resources/html/user/logList.tpl.html?v=V8.2.0_0631'
             },'subMenu' :{
                 templateUrl : function($stateParems){
-                    return 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/subTpl/subMenuModule.tpl.html?v=V8.2.0_0631';
+                    return 'resources/html/subTpl/subMenuModule.tpl.html?v=V8.2.0_0631';
                 }
             },
             'page@logList' : {
-                templateUrl : 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/admin/page.tpl.html?v=V8.2.0_0631'
+                templateUrl : 'resources/html/admin/page.tpl.html?v=V8.2.0_0631'
             },
             'detail' : {
                 templateUrl : function($stateParems){
-                    return 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/user/logDetail.tpl.html?v=V8.2.0_0631';
+                    return 'resources/html/user/logDetail.tpl.html?v=V8.2.0_0631';
                 }
             }
         }
@@ -997,17 +997,17 @@ app.config(function($stateProvider, $urlRouterProvider) {
         url : '/user/source/list?' + commonUrlParam,
         views : {
             'main' : {
-                templateUrl : 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/user/sourceList.tpl.html?v=V8.2.0_0631'
+                templateUrl : 'resources/html/user/sourceList.tpl.html?v=V8.2.0_0631'
             },
             'page@sourceList' : {
-                templateUrl : 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/admin/page.tpl.html?v=V8.2.0_0631'
+                templateUrl : 'resources/html/admin/page.tpl.html?v=V8.2.0_0631'
             },'subMenu' :{
                 templateUrl : function($stateParems){
-                    return 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/subTpl/subMenuModule.tpl.html?v=V8.2.0_0631';
+                    return 'resources/html/subTpl/subMenuModule.tpl.html?v=V8.2.0_0631';
                 }
             },'detail' : {
                 templateUrl : function($stateParems){
-                    return 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/user/sourceDetail.tpl.html?v=V8.2.0_0631';
+                    return 'resources/html/user/sourceDetail.tpl.html?v=V8.2.0_0631';
                 }
             }
         }
@@ -1015,10 +1015,10 @@ app.config(function($stateProvider, $urlRouterProvider) {
         url : '/admin/setting/list?key&' + commonUrlParam,
         views : {
             'main' : {
-                templateUrl : 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/admin/settingList.tpl.html?v=V8.2.0_0631'
+                templateUrl : 'resources/html/admin/settingList.tpl.html?v=V8.2.0_0631'
             },
             'page@settingList' : {
-                templateUrl : 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/admin/page.tpl.html?v=V8.2.0_0631'
+                templateUrl : 'resources/html/admin/page.tpl.html?v=V8.2.0_0631'
             }
         }
     }).state('settingDetail', {
@@ -1026,11 +1026,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
         views : {
             'main' :{
                 templateUrl : function($stateParems){
-                    return 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/admin/settingDetail_'+$stateParems.type+'.tpl.html?v=V8.2.0_0631';
+                    return 'resources/html/admin/settingDetail_'+$stateParems.type+'.tpl.html?v=V8.2.0_0631';
                 }
             },'subMenu' :{
                 templateUrl : function($stateParems){
-                    return 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/subTpl/subMenuSetting.tpl.html?v=V8.2.0_0631';
+                    return 'resources/html/subTpl/subMenuSetting.tpl.html?v=V8.2.0_0631';
                 }
             }
         }
@@ -1038,10 +1038,10 @@ app.config(function($stateProvider, $urlRouterProvider) {
         url : '/admin/hotSearch/list?' + commonUrlParam,
         views : {
             'main' : {
-                templateUrl : 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/admin/hotSearchList.tpl.html?v=V8.2.0_0631'
+                templateUrl : 'resources/html/admin/hotSearchList.tpl.html?v=V8.2.0_0631'
             },
             'page@hotSearchList' : {
-                templateUrl : 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/admin/page.tpl.html?v=V8.2.0_0631'
+                templateUrl : 'resources/html/admin/page.tpl.html?v=V8.2.0_0631'
             }
         }
     }).state('configProperties', {
@@ -1049,11 +1049,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
         views : {
             'main' :{
                 templateUrl : function($stateParems){
-                    return 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/admin/config.properties.html';
+                    return 'resources/html/admin/config.properties.html';
                 }
             },'subMenu' :{
                 templateUrl : function($stateParems){
-                    return 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/subTpl/subMenuSetting.tpl.html?v=V8.2.0_0631';
+                    return 'resources/html/subTpl/subMenuSetting.tpl.html?v=V8.2.0_0631';
                 }
             }
         }
@@ -1062,11 +1062,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
         views : {
             'main' :{
                 templateUrl : function($stateParems){
-                    return 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/user/introduce.html';
+                    return 'resources/html/user/introduce.html';
                 }
             },'subMenu' :{
                 templateUrl : function($stateParems){
-                    return 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/subTpl/subMenuSetting.tpl.html?v=V8.2.0_0631';
+                    return 'resources/html/subTpl/subMenuSetting.tpl.html?v=V8.2.0_0631';
                 }
             }
         }
@@ -1075,24 +1075,24 @@ app.config(function($stateProvider, $urlRouterProvider) {
         views : {
             'main' :{
                 templateUrl : function($stateParems){
-                    return 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/user/dictionaryImportFromSql.tpl.html?v=V8.2.0_0631';
+                    return 'resources/html/user/dictionaryImportFromSql.tpl.html?v=V8.2.0_0631';
                 }
             },'subMenu' :{
-                templateUrl : 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/subTpl/subMenuModule.tpl.html?v=V8.2.0_0631'
+                templateUrl : 'resources/html/subTpl/subMenuModule.tpl.html?v=V8.2.0_0631'
             }
         }
     }).state('userList', {
         url : '/admin/user/list?' + commonUrlParam,
         views : {
             'main' : {
-                templateUrl : 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/admin/userList.tpl.html?v=V8.2.0_0631'
+                templateUrl : 'resources/html/admin/userList.tpl.html?v=V8.2.0_0631'
             },
             'page@userList' : {
-                templateUrl : 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/admin/page.tpl.html?v=V8.2.0_0631'
+                templateUrl : 'resources/html/admin/page.tpl.html?v=V8.2.0_0631'
             },
             'detail' : {
                 templateUrl : function($stateParems){
-                    return 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/admin/userDetail.tpl.html?v=V8.2.0_0631';
+                    return 'resources/html/admin/userDetail.tpl.html?v=V8.2.0_0631';
                 }
             }
         }
@@ -1100,18 +1100,18 @@ app.config(function($stateProvider, $urlRouterProvider) {
         url : '/user/comment/list?type&targetId&' + commonUrlParam,
         views : {
             'main' : {
-                templateUrl : 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/user/commentList.tpl.html?v=V8.2.0_0631'
+                templateUrl : 'resources/html/user/commentList.tpl.html?v=V8.2.0_0631'
             },
             'page@commentList' : {
-                templateUrl : 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/admin/page.tpl.html?v=V8.2.0_0631'
+                templateUrl : 'resources/html/admin/page.tpl.html?v=V8.2.0_0631'
             },
             'detail' : {
                 templateUrl : function($stateParems){
-                    return 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/user/commentDetail.tpl.html?v=V8.2.0_0631';
+                    return 'resources/html/user/commentDetail.tpl.html?v=V8.2.0_0631';
                 }
             },'subMenu' :{
                 templateUrl : function($stateParems){
-                    return 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/subTpl/subMenuModule.tpl.html?v=V8.2.0_0631';
+                    return 'resources/html/subTpl/subMenuModule.tpl.html?v=V8.2.0_0631';
                 }
             }
         }
@@ -1119,7 +1119,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
         url : '/profile?' + commonUrlParam,
         views : {
             'main' : {
-                templateUrl : 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/admin/userDetail.tpl.html?v=V8.2.0_0631'
+                templateUrl : 'resources/html/admin/userDetail.tpl.html?v=V8.2.0_0631'
             }
         }
     })
@@ -1136,14 +1136,14 @@ app.config(function($stateProvider, $urlRouterProvider) {
             'main' :{
                 templateUrl : function($stateParems){
                     if($stateParems.type != 'DICTIONARY')
-                        return 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/visitor/articleDetail_ARTICLE.tpl.html?v=V8.2.0_0631';
+                        return 'resources/html/visitor/articleDetail_ARTICLE.tpl.html?v=V8.2.0_0631';
                     else
-                        return 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/visitor/articleDetail_'+$stateParems.type+'.tpl.html?v=V8.2.0_0631';
+                        return 'resources/html/visitor/articleDetail_'+$stateParems.type+'.tpl.html?v=V8.2.0_0631';
                 }
             },'comment@visitorArticleDetailOld' : {
-                templateUrl : 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/subTpl/comment.tpl.html?v=V8.2.0_0631'
+                templateUrl : 'resources/html/subTpl/comment.tpl.html?v=V8.2.0_0631'
             },'page@visitorArticleDetailOld' : {
-                templateUrl : 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/admin/page.tpl.html?v=V8.2.0_0631'
+                templateUrl : 'resources/html/admin/page.tpl.html?v=V8.2.0_0631'
             }
         }
     }).state('visitorArticleDetail', {
@@ -1152,14 +1152,14 @@ app.config(function($stateProvider, $urlRouterProvider) {
             'main' :{
                 templateUrl : function($stateParems){
                     if($stateParems.type != 'DICTIONARY')
-                        return 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/visitor/articleDetail_ARTICLE.tpl.html?v=V8.2.0_0631';
+                        return 'resources/html/visitor/articleDetail_ARTICLE.tpl.html?v=V8.2.0_0631';
                     else
-                        return 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/visitor/articleDetail_'+$stateParems.type+'.tpl.html?v=V8.2.0_0631';
+                        return 'resources/html/visitor/articleDetail_'+$stateParems.type+'.tpl.html?v=V8.2.0_0631';
                 }
             },'comment@visitorArticleDetail' : {
-                templateUrl : 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/subTpl/comment.tpl.html?v=V8.2.0_0631'
+                templateUrl : 'resources/html/subTpl/comment.tpl.html?v=V8.2.0_0631'
             },'page@visitorArticleDetail' : {
-                templateUrl : 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/admin/page.tpl.html?v=V8.2.0_0631'
+                templateUrl : 'resources/html/admin/page.tpl.html?v=V8.2.0_0631'
             }
         }
     }).state('visitorArticleListOld', {
@@ -1168,12 +1168,12 @@ app.config(function($stateProvider, $urlRouterProvider) {
             'main' :{
                 templateUrl : function($stateParems){
                     if($stateParems.type != "DICTIONARY")
-                        return 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/visitor/articleList_ARTICLE.tpl.html?v=V8.2.0_0631';
+                        return 'resources/html/visitor/articleList_ARTICLE.tpl.html?v=V8.2.0_0631';
                     else
-                        return 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/visitor/articleList_'+$stateParems.type+'.tpl.html?v=V8.2.0_0631';
+                        return 'resources/html/visitor/articleList_'+$stateParems.type+'.tpl.html?v=V8.2.0_0631';
                 }
             },'page@visitorArticleList' : {
-                templateUrl : 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/visitor/page.tpl.html?v=V8.2.0_0631'
+                templateUrl : 'resources/html/visitor/page.tpl.html?v=V8.2.0_0631'
             }
         }
     }).state('visitorArticleList', {
@@ -1182,12 +1182,12 @@ app.config(function($stateProvider, $urlRouterProvider) {
             'main' :{
                 templateUrl : function($stateParems){
                     if($stateParems.type != "DICTIONARY")
-                        return 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/visitor/articleList_ARTICLE.tpl.html?v=V8.2.0_0631';
+                        return 'resources/html/visitor/articleList_ARTICLE.tpl.html?v=V8.2.0_0631';
                     else
-                        return 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/visitor/articleList_'+$stateParems.type+'.tpl.html?v=V8.2.0_0631';
+                        return 'resources/html/visitor/articleList_'+$stateParems.type+'.tpl.html?v=V8.2.0_0631';
                 }
             },'page@visitorArticleList' : {
-                templateUrl : 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/visitor/page.tpl.html?v=V8.2.0_0631'
+                templateUrl : 'resources/html/visitor/page.tpl.html?v=V8.2.0_0631'
             }
         }
     }).state('visitorSourceDetail', {
@@ -1195,7 +1195,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
         views : {
             'main' :{
                 templateUrl : function($stateParems){
-                    return 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/visitor/sourceDetail' +
+                    return 'resources/html/visitor/sourceDetail' +
                         '.tpl.html?v=V8.2.0_0631';
                 }
             }
@@ -2334,7 +2334,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
         url : '/notFound',
         views : {
             'main' : {
-                templateUrl : 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/visitor/notFound.tpl.html?v=V8.2.0_0631'
+                templateUrl : 'resources/html/visitor/notFound.tpl.html?v=V8.2.0_0631'
             }
         }
     }).state('visitorSearchCtrl', {
@@ -2342,75 +2342,75 @@ app.config(function($stateProvider, $urlRouterProvider) {
         views : {
             'main' :{
                 templateUrl : function($stateParems){
-                    return 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/visitor/searchResult.tpl.html?v=V8.2.0_0631';
+                    return 'resources/html/visitor/searchResult.tpl.html?v=V8.2.0_0631';
                 }
             },
             'page@visitorSearchCtrl' : {
-                templateUrl : 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/visitor/page.tpl.html?v=V8.2.0_0631'
+                templateUrl : 'resources/html/visitor/page.tpl.html?v=V8.2.0_0631'
             }
         }
     }).state('visitorError', {
         url : '/error/list?projectId',
         views : {
             'main' : {
-                templateUrl : 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/visitor/errorList.tpl.html?v=V8.2.0_0631'
+                templateUrl : 'resources/html/visitor/errorList.tpl.html?v=V8.2.0_0631'
             },
             'page@visitorError' : {
-                templateUrl : 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/visitor/page.tpl.html?v=V8.2.0_0631'
+                templateUrl : 'resources/html/visitor/page.tpl.html?v=V8.2.0_0631'
             }
         }
     }).state('visitorModuleCtrl', {
         url : '/module/list?projectId',
         views : {
             'main' : {
-                templateUrl : 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/visitor/moduleList.tpl.html?v=V8.2.0_0631'
+                templateUrl : 'resources/html/visitor/moduleList.tpl.html?v=V8.2.0_0631'
             },
             'page@visitorModuleCtrl' : {
-                templateUrl : 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/visitor/page.tpl.html?v=V8.2.0_0631'
+                templateUrl : 'resources/html/visitor/page.tpl.html?v=V8.2.0_0631'
             }
         }
     }).state('visitorInterfaceCtrl', {
         url : '/interface/list?projectId&moduleId',
         views : {
             'main' : {
-                templateUrl : 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/visitor/interfaceList.tpl.html?v=V8.2.0_0631'
+                templateUrl : 'resources/html/visitor/interfaceList.tpl.html?v=V8.2.0_0631'
             },
             'page@visitorInterfaceCtrl' : {
-                templateUrl : 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/visitor/page.tpl.html?v=V8.2.0_0631'
+                templateUrl : 'resources/html/visitor/page.tpl.html?v=V8.2.0_0631'
             }
         }
     }).state('visitorInterfaceDetailCtrl', {
         url : '/interface/detail?projectId&id',
         views : {
             'main' : {
-                templateUrl : 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/visitor/interfaceDetail.tpl.html?v=V8.2.0_0631'
+                templateUrl : 'resources/html/visitor/interfaceDetail.tpl.html?v=V8.2.0_0631'
             }
         }
     }).state('frontInterfaceDetailCtrlOld', {
         url : '/:projectId/front/interfaceDetail/:id',
         views : {
             'main' : {
-                templateUrl : 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/visitor/interfaceDetail.tpl.html'
+                templateUrl : 'resources/html/visitor/interfaceDetail.tpl.html'
             }
         }
     }).state('visitorSourceList', {
         url : '/source/list?projectId&moduleId',
         views : {
             'main' : {
-                templateUrl : 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/visitor/sourceList.tpl.html?v=V8.2.0_0631'
+                templateUrl : 'resources/html/visitor/sourceList.tpl.html?v=V8.2.0_0631'
             },
             'page@visitorSourceList' : {
-                templateUrl : 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/visitor/page.tpl.html?v=V8.2.0_0631'
+                templateUrl : 'resources/html/visitor/page.tpl.html?v=V8.2.0_0631'
             }
         }
     }).state('visitorProjectList', {
         url : '/project/list?projectShowType&type',
         views : {
             'main' : {
-                templateUrl : 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/visitor/projectList.tpl.html?v=V8.2.0_0631'
+                templateUrl : 'resources/html/visitor/projectList.tpl.html?v=V8.2.0_0631'
             },
             'page@visitorProjectList' : {
-                templateUrl : 'https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/html/visitor/page.tpl.html?v=V8.2.0_0631'
+                templateUrl : 'resources/html/visitor/page.tpl.html?v=V8.2.0_0631'
             }
         }
     })
