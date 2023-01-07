@@ -6,6 +6,7 @@ import cn.crap.framework.base.BaseController;
 import cn.crap.model.InterfaceWithBLOBs;
 import cn.crap.service.InterfaceService;
 import cn.crap.service.tool.StringCache;
+import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -39,7 +40,6 @@ public class MockController extends BaseController{
 	@ResponseBody
 	public void trueExam(HttpServletResponse response, HttpServletRequest request, @RequestParam String id) throws MyException {
         String ip =  (request == null ? "" : request.getRemoteHost());
-        tongJiIp(ip);
         getExam(response, request, id, ip,true);
     }
 
@@ -47,7 +47,6 @@ public class MockController extends BaseController{
 	@ResponseBody
 	public void falseExam(HttpServletResponse response, HttpServletRequest request, @RequestParam String id, @RequestParam(defaultValue = "false") Boolean cache) throws MyException {
         String ip =  (request == null ? "" : request.getRemoteHost());
-        tongJiIp(ip);
         getExam(response, request, id, ip,false);
 	}
 
@@ -59,12 +58,11 @@ public class MockController extends BaseController{
         response.addHeader("Access-Control-Allow-Methods", "GET,HEAD,POST,PUT,PATCH,DELETE,OPTIONS,TRACE");
         response.addHeader("Access-Control-Allow-Origin", "*");
 
+        log.info("getExam:" + id  + "," + ip + "," + getHeaders(request));
         if ("166575110957612017308,167049792829712001280,164502440303712036550".contains(id) || blackInterface(id)){
             printMsg(response, "", null);
             return;
         }
-
-        log.info("getExam:" + id  + "," + ip + "," + getHeaders(request));
 
         String mockKey = getMockKey(id, isTrueExam);
         String cacheValue = stringCache.get(mockKey);
@@ -88,42 +86,6 @@ public class MockController extends BaseController{
         printMsg(response, mockResult, contentType);
     }
 
-    private static int removeNum = 1;
-    private static int totalNum = 0;
-    private void tongJiIp(String ip) {
-        totalNum = totalNum + 1;
-        AtomicInteger value = ipNumMap.get(ip);
-        if (value == null){
-            value = new AtomicInteger(0);
-        }
-        AtomicInteger oldValue = ipNumMap.putIfAbsent(ip, value);
-        if (oldValue != null) {
-            value = oldValue;
-        }
-        int num = value.incrementAndGet();
-        if (num == 100){
-            log.info(ip + "--100");
-        }
-
-        if (totalNum % 100 == 0){
-            log.info("totalNum:" + totalNum);
-
-        }
-        if (ipNumMap.size() >= 100){
-            Set<String> keySet = ipNumMap.keySet();
-            for (String key : keySet){
-                if (ipNumMap.get(key) == null){
-                    continue;
-                }
-                log.info(key + "--" + ipNumMap.get(key).get());
-                if (ipNumMap.get(key).get() <= removeNum){
-                    ipNumMap.remove(key);
-                }
-            }
-            removeNum = removeNum + 1;
-            log.info("removeIp:" + removeNum);
-        }
-    }
 
     public static String getMockKey(String id, boolean isTrueExam){
 		return MOCK_KEY_PRE + (isTrueExam ? "true:" : "false:")+ id;

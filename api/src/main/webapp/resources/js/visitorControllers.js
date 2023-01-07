@@ -243,7 +243,7 @@ visitorModule.controller('visitorSourceCtrl', function($rootScope,$scope, $http,
 /***
  * 前端页面初始化，加载系统设置，菜单等
  */
-visitorModule.controller('fontInit', function($rootScope,$scope, $http, $state, $stateParams,httpService) {
+visitorModule.controller('fontInit', function($rootScope,$scope, $http, $state, $stateParams, $location, httpService) {
 	$scope.getData = function(page,setPwd) {
 		var params = "iUrl=visitor/init.do|iLoading=FLOAT"; //  表示查询所有
 		httpService.callHttpMethod($http,params).success(function(result) {
@@ -254,6 +254,7 @@ visitorModule.controller('fontInit', function($rootScope,$scope, $http, $state, 
 			$rootScope.settings = result.data.settingMap;
 			$rootScope.sessionAdminName = result.data.sessionAdminName;
 			$rootScope.fontMenus = result.data.menuList;
+			$rootScope.fontDomainUrl = $location.absUrl().split('/')[0] + "//" + $location.absUrl().split('/')[2];
 		});
     };
     $scope.getData();

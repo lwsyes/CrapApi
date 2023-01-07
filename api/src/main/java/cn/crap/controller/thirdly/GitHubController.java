@@ -11,8 +11,10 @@ import cn.crap.model.UserPO;
 import cn.crap.query.UserQuery;
 import cn.crap.service.UserService;
 import cn.crap.service.thirdly.GitHubService;
+import cn.crap.service.tool.StringCache;
 import cn.crap.utils.*;
 import org.apache.http.conn.ConnectTimeoutException;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -56,6 +58,7 @@ public class GitHubController extends BaseController {
         try {
             gitHubUser = githHubService.getUser(githHubService.getAccessToken(code, getCallBackUrl(domain)).getAccess_token());
         } catch (Throwable e){
+            log.error("github/login.ignore error", e);
             request.setAttribute("result", "授权失败，请重试！");
             return ERROR_VIEW;
         }
@@ -101,6 +104,7 @@ public class GitHubController extends BaseController {
     }
 
     private String getCallBackUrl(String callDomain) throws Exception{
-        return URLEncoder.encode(Tools.getUrlPath() + "/github/login.ignore?domain=" + URLEncoder.encode(callDomain, "utf-8"), "utf-8");
+        String callBackDomain = settingCache.get(SettingEnum.CALLBACK_DOMAIN.getKey()).getValue();
+        return URLEncoder.encode(callBackDomain + "github/login.ignore?domain=" + URLEncoder.encode(callDomain, "utf-8"), "utf-8");
     }
 }

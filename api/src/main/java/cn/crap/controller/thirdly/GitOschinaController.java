@@ -57,6 +57,7 @@ public class GitOschinaController extends BaseController {
             // callbackUrl 必须与授权时的callbackUrl一致
             oschinaUser = oschinaService.getUser(oschinaService.getAccessToken(code, getCallBackUrl(domain)).getAccess_token());
         } catch (Throwable e){
+            log.error("oschina/login.ignore error", e);
             request.setAttribute("result", "授权失败，请重试！");
             return ERROR_VIEW;
         }
@@ -103,6 +104,7 @@ public class GitOschinaController extends BaseController {
     }
 
     private String getCallBackUrl(String callDomain) throws Exception{
-        return URLEncoder.encode(Tools.getUrlPath() + "/oschina/login.ignore?domain=" + URLEncoder.encode(callDomain, "utf-8"), "utf-8");
+        String callBackDomain = settingCache.get(SettingEnum.CALLBACK_DOMAIN.getKey()).getValue();
+        return URLEncoder.encode(callBackDomain + "oschina/login.ignore?domain=" + URLEncoder.encode(callDomain, "utf-8"), "utf-8");
     }
 }

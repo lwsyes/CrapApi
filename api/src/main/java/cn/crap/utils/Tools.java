@@ -8,6 +8,7 @@ import cn.crap.framework.SpringContextHolder;
 import cn.crap.model.ProjectPO;
 import cn.crap.service.tool.StringCache;
 import org.apache.commons.lang.StringEscapeUtils;
+import org.apache.log4j.Logger;
 import org.springframework.web.context.ContextLoader;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -25,6 +26,8 @@ import java.util.zip.ZipOutputStream;
 
 
 public class Tools {
+    private static Logger log = Logger.getLogger(Tools.class);
+
 //    public static String getDomain(){
 //        HttpServletRequest request = Tools.getRequest();
 //        String uri = request.getRequestURI();//返回请求行中的资源名称
@@ -42,6 +45,7 @@ public class Tools {
             HttpServletRequest request = Tools.getRequest();
             String uri = request.getRequestURI();//返回请求行中的资源名称
             String url = request.getRequestURL().toString();//获得客户端发送请求的完整url
+            log.warn("login, url:" + url + ",uri:" + uri);
             return url.substring(0, url.length() - uri.length()) + request.getContextPath();
         } catch (Exception e){
             e.printStackTrace();
