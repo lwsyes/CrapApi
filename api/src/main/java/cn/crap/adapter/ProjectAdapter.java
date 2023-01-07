@@ -51,6 +51,9 @@ public class ProjectAdapter {
             dto.setVisitWay("通过项目地址访问 -- 安全度：低");
         }
 
+        if (dto.getCover() != null && !dto.getCover().startsWith("http")){
+            dto.setCover("https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/" + dto.getCover());
+        }
         return dto;
     }
 

@@ -11,9 +11,9 @@
     <link href="${icon}" rel="shortcut icon" type="image/x-icon"/>
     <link href="${icon}" rel="icon" type="image/x-icon"/>
     <link href="${icon}" rel="shortcut" type="image/x-icon"/>
-    <link href="https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/bootstrap-3.0.0/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/framework/bootstrap-3.0.0/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     <!-- base-min.css,admin.css应该发在bootstrap之后,覆盖部分bootstrap样式 -->
-    <link href="resources/css/allCss.css?v=V8.2.0_0631" rel="stylesheet" type="text/css"/>
+    <link href="https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/css/allCss.css?v=V8.2.0_0630" rel="stylesheet" type="text/css"/>
     <title>${title}</title>
 </head>
 <body>

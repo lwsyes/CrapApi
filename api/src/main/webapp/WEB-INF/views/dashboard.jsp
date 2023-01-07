@@ -11,10 +11,13 @@
     <link href="${icon}" rel="shortcut icon" type="image/x-icon"/>
     <link href="${icon}" rel="icon" type="image/x-icon"/>
     <link href="${icon}" rel="shortcut" type="image/x-icon"/>
-    <link href="https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/bootstrap-3.0.0/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/framework/bootstrap-3.0.0/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     <!-- base-min.css,admin.css应该发在bootstrap之后,覆盖部分bootstrap样式 -->
-    <link href="resources/css/allCss.css?v=V8.2.0_0631" rel="stylesheet" type="text/css"/>
+    <link href="https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/css/allCss.css?v=V8.2.0_0630" rel="stylesheet" type="text/css"/>
+    <!-- 谷歌广告 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2085270222106815"
+     crossorigin="anonymous"></script> -->
     <title>${title}</title>
+    <meta name="google-site-verification" content="Tc-arKS--4T0xlOhT8wqTRuL9sdMJWrPfoBt4fgGcE8" />
 </head>
 <body class="BGFFF">
 <div class="circular circular-1"></div>
@@ -85,6 +88,23 @@
         </div>
 </div>
 <!-- End: top-->
+
+<div class="container p0">
+    <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-2085270222106815"
+         data-ad-slot="6227354044"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script> -->
+    <div class="abs" style="color:#ccc;padding:10px;">广告</div>
+    <a target="_blank" href="http://apifox.cn/a1crapapi" class="cursor">
+        <img src="https://api-crap-cn.oss-cn-beijing.aliyuncs.com/resources/images/advert/apifox.png" style="width:100%; height: 220px;"/>
+    </a>
+</div>
 
 <div class="cb"></div>
 <div class="fun-introduce container p0 mt50">
