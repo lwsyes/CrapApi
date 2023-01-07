@@ -52,7 +52,7 @@ public class ProjectAdapter {
         }
 
         if (dto.getCover() != null && !dto.getCover().startsWith("http")){
-            dto.setCover("https://api-crap-cn.oss-cn-beijing.aliyuncs.com/api.crap.cn/" + dto.getCover());
+            dto.setCover("https://api-crap-cn.oss-cn-beijing.aliyuncs.com/" + dto.getCover());
         }
         return dto;
     }
