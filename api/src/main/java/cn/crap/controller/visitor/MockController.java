@@ -59,7 +59,7 @@ public class MockController extends BaseController{
         response.addHeader("Access-Control-Allow-Origin", "*");
 
         log.info("getExam:" + id  + "," + ip + "," + getHeaders(request));
-        if ("166575110957612017308,167049792829712001280,164502440303712036550".contains(id) || blackInterface(id)){
+        if (blackInterface(id)){
             printMsg(response, "", null);
             return;
         }
