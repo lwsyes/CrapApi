@@ -170,7 +170,7 @@ public class MainController extends BaseController {
     @AuthPassport(authority = C_SUPER)
     public JsonResult compress() throws Exception{
         try {
-            systemService.compressSource();
+            systemService.mergeSource();
         } catch (Throwable e){
             log.error("压缩js、css文件异常", e);
         }

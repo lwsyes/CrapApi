@@ -29,6 +29,12 @@
 		</button>
 	</div>
 	<div class="form-group mt10 mb10 C999">
+		<div class="f12" ng-if="crapFrom!='web'">
+			为了提供更安全、快速的服务，请点击插件【设置】进入【远程服务地址】，<span class="adorn-color">将服务器地址修改为：https://crap.cn</span><br/>
+		</div>
+		<span class="adorn-color">如需使用如下快捷登录方式</span>，请点击
+		<a target="_blank" ng-href="{{fontDomainUrl}}">【官网】</a>，在官网登录后刷新插件，将自动同步登录态。
+		<br/>
 		你也可以利用以下方式进行登录 <br/>
 		<a href="{{settings.CALLBACK_DOMAIN}}github/authorize.ignore?domain={{fontDomainUrl}}" class="cursor p10" target="_self" ng-if="settings.githubClientID=='true'">
 			<i class="iconfont f30">&#xe631;</i> 

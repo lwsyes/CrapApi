@@ -255,6 +255,13 @@ visitorModule.controller('fontInit', function($rootScope,$scope, $http, $state, 
 			$rootScope.sessionAdminName = result.data.sessionAdminName;
 			$rootScope.fontMenus = result.data.menuList;
 			$rootScope.fontDomainUrl = $location.absUrl().split('/')[0] + "//" + $location.absUrl().split('/')[2];
+			// fontDomainUrl = https://crap.cn/,则不需要提示
+			$rootScope.crapFrom = getParamFromUrl($location.absUrl(), "crapFrom");
+
+			// fontDomainUrl = https://crap.cn/,则不需要提示
+			if ($rootScope.fontDomainUrl =='https://crap.cn'){
+			    $rootScope.crapFrom = 'web';
+			}
 		});
     };
     $scope.getData();

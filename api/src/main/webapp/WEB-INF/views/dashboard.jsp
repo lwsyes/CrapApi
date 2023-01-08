@@ -63,8 +63,9 @@
                         <a class="btn btn-adorn r5 w150 f14 ml10 fw200" href="index.do#/project/list?projectShowType=3" target="_blank">查看项目</a>
                     </c:if>
                     <c:if test="${login == false}">
-                        <a class="btn btn-main r5 w150 f14 ml10 fw200" href="loginOrRegister.do#/login" target="_blank">登录</a>
-                        <a class="btn btn-adorn r5 w150 f14 ml10 fw200" href="/loginOrRegister.do#/register" target="_blank">注册</a>
+                        <!-- crapFrom=web#/login，解析参数会有问题，crapFrom==web#/login-->
+                        <a class="btn btn-main r5 w150 f14 ml10 fw200" href="loginOrRegister.do?crapFrom=web&1=1#/login" target="_blank">登录</a>
+                        <a class="btn btn-adorn r5 w150 f14 ml10 fw200" href="/loginOrRegister.do?crapFrom=web&1=1#/register" target="_blank">注册</a>
 
                         <a class="f12 ml10 fw200 CFFF cursor" href="user/mock.do" target="_blank">免登录试用</a>
                     </c:if>
