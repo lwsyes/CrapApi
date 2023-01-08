@@ -89,13 +89,13 @@ public class MockController extends BaseController{
             if (isCfNetwork){
                 if (random.nextInt(10) <= 6){
                     log.info("getExam:" + id  + ",isCfNetwork随机拦截");
-                    printMsg(response, "{\"errMsg\":\"该功能仅供调试使用，请勿在正式环境使用。如需在正式环境使用，请微信联系（NickTang-TT）解决。\"}", null);
+                    printMsg(response, "{\"errMsg\":\"随机拦截提示：该功能仅供调试使用，请勿在正式环境使用。如需在正式环境使用，请微信联系（NickTang-TT）解决。\"}", null);
                     return;
                 }
             } else {
                 if (random.nextInt(10) <= 2){
                     log.info("getExam:" + id  + ",随机拦截");
-                    printMsg(response, "{\"errMsg\":\"该功能仅供调试使用，请勿在正式环境使用。如需在正式环境使用，请微信联系（NickTang-TT）解决。\"}", null);
+                    printMsg(response, "{\"errMsg\":\"随机拦截提示：该功能仅供调试使用，请勿在正式环境使用。如需在正式环境使用，请微信联系（NickTang-TT）解决。\"}", null);
                     return;
                 }
             }
@@ -130,14 +130,15 @@ public class MockController extends BaseController{
 
     protected String getHeaders(HttpServletRequest request ) {
         //获取请求头信息
-        Enumeration headerNames = request.getHeaderNames();
-        StringBuilder sb = new StringBuilder();
-        //使用循环遍历请求头，并通过getHeader()方法获取一个指定名称的头字段
-        while (headerNames.hasMoreElements()){
-            String headerName = (String) headerNames.nextElement();
-            sb.append(headerName + " : " + request.getHeader(headerName) + ";");
-        }
-        return sb.toString() + request.getRequestURL();
+//        Enumeration headerNames = request.getHeaderNames();
+//        StringBuilder sb = new StringBuilder();
+//        //使用循环遍历请求头，并通过getHeader()方法获取一个指定名称的头字段
+//        while (headerNames.hasMoreElements()){
+//            String headerName = (String) headerNames.nextElement();
+//            sb.append(headerName + " : " + request.getHeader(headerName) + ";");
+//        }
+//        return sb.toString() + request.getRequestURL();
+        return request.getHeader("user-agent") + ";" + request.getRequestURL();
     }
 
 }
