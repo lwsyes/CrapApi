@@ -44,7 +44,8 @@ public enum SettingEnum {
 	POST_WOMAN_INTER_NUM("PLUG_MAX_INTER_NUM", SettingStatus.COMMON, SettingType.TEXT, 120, null, "postwoman插件最大允许的接口数"),
 	POST_WOMAN_VIP_INTER_NUM("VIP_PLUG_INTER_NUM", SettingStatus.COMMON, SettingType.TEXT, 200, null, "vip 用户 postwoman插件最大允许的接口数"),
 	IP_BLACK_LIST("IP_BLACK_LIST", SettingStatus.HIDDEN, SettingType.TEXT, null, "all", "黑名单IP"),
-	INTERFACE_BLACK_LIST("INTERFACE_BLACK_LIST", SettingStatus.HIDDEN, SettingType.TEXT, null, "all", "接口mock黑名单拦截"),
+	INTERFACE_BLACK_LIST("INTERFACE_BLACK_LIST", SettingStatus.HIDDEN, SettingType.TEXT, null, "all", "接口mock黑名单拦截，all代表全部"),
+	INTERFACE_WHITE_LIST("INTERFACE_WHITE_LIST", SettingStatus.HIDDEN, SettingType.TEXT, null, "all", "接口白名单(接口ID后7位代表用户ID)，all代表全部"),
 
 
 	OPEN_ALIYUN("OPEN_ALIYUN", SettingStatus.HIDDEN, SettingType.TEXT, null, "false", "是否开启阿里云图片存储，开通后图片、文件将通过云端读写，true表示打开");
