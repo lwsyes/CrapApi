@@ -68,7 +68,7 @@ public class MockController extends BaseController{
         }
 
         // 接口白名单：缓存5分钟，从内存读取
-        if (System.currentTimeMillis() - whiteStartTime > oneMin * 10){
+        if (System.currentTimeMillis() - whiteStartTime > oneMin * 5){
             whiteStartTime = System.currentTimeMillis();
             String whiteListStr = settingCache.getStr(SettingEnum.INTERFACE_WHITE_LIST);
             whiteList = Lists.newArrayList(whiteListStr.split(","));
